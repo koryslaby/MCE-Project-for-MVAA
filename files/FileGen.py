@@ -70,6 +70,7 @@ class Form_Generator:
     
 
     #adds both the Olivet course outcomes with there coresponding military course outcomes.
+    #c_outcomes would be just a string for the Olivet college outcome and then jst_outcomes would be the coresponding array of matching military outcomes.
     def Like_Outcomes(self, c_outcome, jst_outcome):
         self.Olivet_Course_Outcomes(c_outcome)
         for i in range(0, len(jst_outcome)):
