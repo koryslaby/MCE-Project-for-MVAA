@@ -70,29 +70,31 @@ NV-1710-0118::Inter-service Builder "A" School USN::Upon completion of the cours
 NV-2201-0128::Expeditionary Combat Skills::Upon completion of the course, the student will be able to perform basic first aid, land navigation, military communications, firearm safety, accomplish high-risk security operations; identify and safely handle counter-improvised explosive devices; perform basic movement while engaging targets and exercising judgment-based engagement training; demonstrate knowledge of combat mind set, chemical, biological, radiological and nuclear training.::3.0::CJ 440::3
 NV-2202-0165::Recruit Training::Upon completion of the course, the student will be able to demonstrate knowledge of general military and Navy protocol, first aid, personal health, safety, basic swimming, water survival skills, physical fitness, and fire fighting.::1.0::PE 101::3
 NV-2201-0128::Expeditionary Combat Skills::Upon completion of the course, the student will be able to perform basic first aid, land navigation, military communications, firearm safety, accomplish high-risk security operations; identify and safely handle counter-improvised explosive devices; perform basic movement while engaging targets and exercising judgment-based engagement training; demonstrate knowledge of combat mind set, chemical, biological, radiological and nuclear training.::2.0::PE 107::3
-NURS 141::::::::NULL::2
-CCAF 3abr1c4310ta::::::::CJ 440::3
-CCAF 5al599400-003::::::::BUS 300::3
-CCAF Cabp3m031::::::::BUS 200::3
-CCAF lcarp3m051-015a-1::::::::HWL 200::3
-CCAF lcarp3m051-015a-2::::::::HWL 240::3
-CCAF lcarp3m051-015a-3::::::::HWL 260::3
-CCAF lcarp3m051-015a-4::::::::HWL 307::3
-CCAF lcarp3m051-015a-5::::::::HWL 354::3
-CCDAF lcarp3m051-015a-1::::::::HWL 200::3
-CCDAF lcarp3m051-015a-2::::::::HWL 240::3
-CCDAF lcarp3m051-015a-3::::::::HWL 260::3
-CCDAF lcarp3m051-015a-4::::::::HWL 307::3
-CCDAF lcarp3m051-015a-5::::::::HWL 354::3
+PHE1000::Physical Education and Wellness::Basic concepts and principles of wellness. Includes physical fitness, nutrition, sexually transmitted diseases, suicide awareness and prevention, sexual assault prevention and response, self-aid/buddy care, healthy lifestyles, and an introduction to the Air Force fitness program using drill, calisthenics, and running.::2.0::PE 107::3
+PHE1000::Physical Education and Wellness::Basic concepts and principles of wellness. Includes physical fitness, nutrition, sexually transmitted diseases, suicide awareness and prevention, sexual assault prevention and response, self-aid/buddy care, healthy lifestyles, and an introduction to the Air Force fitness program using drill, calisthenics, and running.::3.0::HWL 200::3
+SVS1105::Fitness and Sports Management::Introduction to fitness and sports management. Includes fitness facility operations, staff training requirements, fitness and sports equipment maintenance, fitness improvement and sports programs, physical conditioning and training exercises with emphasis on calisthenics, cardiovascular, selectorized, and free weights equipment familiarization, injury prevention, and overview of the major muscle groups and musculoskeletal system.::3.0::HWL 354::3
+PHE1800::Physical Conditioning::Calisthenics and running to condition muscle and body organs (heart, lungs). Includes coordination, stamina and overall fitness for extensive field exercises.::1.0::PE 101::3
+COM1403::Radio Communications Theory::Transmitter principles, receiver tuning and operation, antenna, wave propagation, and communications procedures.::1.0::AS 111::3
+LMM1101::Leadership and Management I::Leadership role and responsibilities of journeymen; theories, techniques, and practical application of leadership and followership; supervision; management; problem solving; conflict resolution; concepts of human behavior; global diversity; standards of discipline; counseling and interpersonal relationships; mentoring; group dynamics; team development; ethics and core values; evaluation of enlisted personnel; time management; stress management; substance abuse; and current social issues.::1.0::AS 112::3
+LMM1102::Managerial Communications I::Principles of oral and written communications for Airmen; theories and concepts of communications; factors influencing the communication process; speaking techniques such as oral presentations; and principles of effective writing.::3.0::BUS 300::3
+LCARP3M051-015A-1::Fitness Specialist Course::Training is provided on Air Force Fitness and Sports Program, Wellness, Safety, Nutrition, Human Physiology, Exercise Application, Fitness Profile, Fitness Program Development, and Customer Service. The method of instruction is group paced, consisting of lecture, discussion, and demonstration and performance.::3.0::HWL 200::3
+LCARP3M051-015A-2::Fitness Specialist Course::Training is provided on Air Force Fitness and Sports Program, Wellness, Safety, Nutrition, Human Physiology, Exercise Application, Fitness Profile, Fitness Program Development, and Customer Service. The method of instruction is group paced, consisting of lecture, discussion, and demonstration and performance.::3.0::HWL 240::3
+LCARP3M051-015A-3::Fitness Specialist Course::Training is provided on Air Force Fitness and Sports Program, Wellness, Safety, Nutrition, Human Physiology, Exercise Application, Fitness Profile, Fitness Program Development, and Customer Service. The method of instruction is group paced, consisting of lecture, discussion, and demonstration and performance.::3.0::HWL 260::3
+LCARP3M051-015A-4::Fitness Specialist Course::Training is provided on Air Force Fitness and Sports Program, Wellness, Safety, Nutrition, Human Physiology, Exercise Application, Fitness Profile, Fitness Program Development, and Customer Service. The method of instruction is group paced, consisting of lecture, discussion, and demonstration and performance.::3.0::HWL 307::3
+LCARP3M051-015A-5::Fitness Specialist Course::Training is provided on Air Force Fitness and Sports Program, Wellness, Safety, Nutrition, Human Physiology, Exercise Application, Fitness Profile, Fitness Program Development, and Customer Service. The method of instruction is group paced, consisting of lecture, discussion, and demonstration and performance.::3.0::HWL 354::3
 NER-CM-004::::::::BUS 300::3
 NER-CM-004::::::::SCI 107::3
 NER-QM-005::::::::NULL::3
 NER-SN-002::::::::PE 104::3
 MOS-1601-2077::::::::CEM 111::3
-MOS-31B002::::::::CJ 110::3
-MOS-31B002::::::::CJ 230::3
-A830-0030::::::::CJ 220::3
-A830-0300::::::::CJ 440::3
+MOS-31B 002::::::::CJ 110::3
+MOS-31B 002::::::::CJ 230::3
+A830-0030::Expeditionary Combat Skills::Upon completion of the course, the student will be able to perform basic first aid, land navigation, military communications, firearm safety, accomplish high-risk security operations; identify and safely handle counter-improvised explosive devices; perform basic movement while engaging targets and exercising judgment-based engagement training; demonstrate knowledge of combat mind set, chemical, biological, radiological and nuclear training.::3.0::CJ 220::3
+A830-0300::Expeditionary Combat Skills::Upon completion of the course, the student will be able to perform basic first aid, land navigation, military communications, firearm safety, accomplish high-risk security operations; identify and safely handle counter-improvised explosive devices; perform basic movement while engaging targets and exercising judgment-based engagement training; demonstrate knowledge of combat mind set, chemical, biological, radiological and nuclear training.::3.0::CJ 440::3
 NEC-90CS::::::::CJ 220::3
 CNET-11997::::::::IRM 454::3
 DOD-1aa-v20::::::::IRM 454::3
+CCAF 3ABR1C4310TA::::::::CJ 440::3
+CCAF 5AL599400-003::::::::BUS 300::3
+CCAF CABP3M031::::::::BUS 200::3
+NURS 141::::::::NULL::2
