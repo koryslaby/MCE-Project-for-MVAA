@@ -5,6 +5,7 @@ A-830-0030::Exercising judgment-based engagement training
 A-830-0030::Identify and safely handle counter improvised explosive devices
 A-830-0030::Perform basic movements while engaging targets 
 A-830-0030::accomplish high risk security operations
+A-830-0030::identify and safely handle counter-improvised explosive devices; chemical, biological, radiological and nuclear training; casualty care; pulse check and blood sweep; control bleeding; airway management; nasopharyngeal, breathing, bandaging and splints; head and spine treatment; burns, environmental injuries; basic first aid; vehicle emergency egress drills; disease prevention; field sanitation; fractures; infection control; nuclear, biological, and chemical agents; tactical combat casualty care.
 AR-1601-0277::dispense and retrive hose lines
 AR-1601-0277::distribute aviation fuel
 AR-1601-0277::ensure maintenance of safety and environmental conditions during operations
@@ -79,6 +80,13 @@ BUS 200::Summarize the types of business ownerships and their advantages/disadva
 BUS 200::Understand business economic systems
 BUS 200::Understand business economic systems
 BUS 200::Understand the “Human Resource” function in business
+BUS 201::Describe the role of accounting concepts and principles in businesses.
+BUS 201::Analyze and record basic business transactions.
+BUS 201::Perform period-end adjustments and prepare financial statements.
+BUS 201::Use appropriate sources to find accounting information for an organization.
+BUS 201::Prepare appropriate entries for accounts receivable and recognition of bad debts.
+BUS 201::Account for merchandising operations and track inventory using different valuation models.
+BUS 201::Illustrate and record the use of debt and equity financing in a corporate environment.
 BUS 202::Analyze long-term capital budgeting decisions and develop recommendations
 BUS 202::Calculate and report product costs, and determine cost flows through a company
 BUS 202::Classify cost behavior and analyze cost-volume-profit relationships 
@@ -123,13 +131,13 @@ BUS 490::Determining and prioritizing a firm’s internal strengths and weakness
 BUS 490::Establishing long-term objectives 
 BUS 490::Implementing Strategies
 BUS 490::Writing excellent vision and mission 
-BUS201::Account for merchandising operations and track inventory using different valuation models
-BUS201::Analyze and record basic business transactions
-BUS201::Describe the role of accounting concepts and principles in businesses
-BUS201::Illustrate and record the use of debt and equity financing in a corporate environment
-BUS201::Perform period-end adjustments and prepare financial statements
-BUS201::Prepare appropriate entries for accounts receivable and recognition of bad debts
-BUS201::Use appropriate sources to find accounting information for an organization
+BUS 201::Account for merchandising operations and track inventory using different valuation models
+BUS 201::Analyze and record basic business transactions
+BUS 201::Describe the role of accounting concepts and principles in businesses
+BUS 201::Illustrate and record the use of debt and equity financing in a corporate environment
+BUS 201::Perform period-end adjustments and prepare financial statements
+BUS 201::Prepare appropriate entries for accounts receivable and recognition of bad debts
+BUS 201::Use appropriate sources to find accounting information for an organization
 CEM 111::Students can communicate with their peers to solve problems within a group setting, while taking on the role of manager, spokesperson, reader, or equipment manager.
 CEM 111::Students can identify and balance chemical reactions.
 CEM 111::Students can identify and describe the properties of liquids, solids, gases, and solutions.
@@ -170,20 +178,19 @@ CJ 280::Analyze the concepts of criminal law and apply the knowledge to present 
 CJ 280::Explain the difference between civil and criminal law
 CJ 280::Identify, analyze, and synthesize the elements of various crimes in order to prosecute or defend a client
 CJ 280::Identify and evaluate how the law is applied in society
-CJ 280::Identify and evaluate how the law is applied in the criminal justice system
-CJ 320::Analyze how differences are constructed by people and can be changed by people.
+CJ 280::Identify and evaluate how the law is applied in the criminal justice system.
+CJ 285::Describe the impact of law on correction personnel.
+CJ 285::Analyze legal cases that have set precedent in the correction field.
+CJ 285::Apply legal doctrines to situations that may arise in the environment of corrections.
+CJ 285::Identify and describe how constitutional law affects you, and the lives of staff, prisoners, ex-convicts, and administrators.
+CJ 285::Apply risk management strategies to reduce the risk of exposure to liability.
+CJ 285::Understand prisoners’ rights in relation to constitutional law.
 CJ 320::Analyze how differences are constructed by people and can be changed by people.
 CJ 320::Students will be able to analyze and describe the norm or standard in our society that reflects power within our culture.
-CJ 320::Students will be able to analyze and describe the norm or standard in our society that reflects power within our culture.
-CJ 320::Students will be able to define discrimination, prejudice, and stereotypes relating to Native Americans, African Americans, Latinos, women, elderly, and gay & lesbians in the criminal justice system.
 CJ 320::Students will be able to define discrimination, prejudice, and stereotypes relating to Native Americans, African Americans, Latinos, women, elderly, and gay & lesbians in the criminal justice system.
 CJ 320::Students will be able to evaluate the role criminal justice practitioners have on discrimination in the criminal justice system.
-CJ 320::Students will be able to evaluate the role criminal justice practitioners have on discrimination in the criminal justice system.
-CJ 320::Students will be able to evaluate the role criminal justice practitioners have on social justice in our society
 CJ 320::Students will be able to evaluate the role criminal justice practitioners have on social justice in our society
 CJ 320::Students will be able to examine and articulate the impact service to the greater community has on the recipients of service and the participants providing the service.
-CJ 320::Students will be able to examine and articulate the impact service to the greater community has on the recipients of service and the participants providing the service.
-CJ 320::Students will be able to reflect on and describe your role and responsibility as community builders.
 CJ 320::Students will be able to reflect on and describe your role and responsibility as community builders.
 CJ 360::The student will be exposed to, and able to demonstrate appropriate interview and interrogating techniques.
 CJ 360::The student will be familiar with the ethical and legal components of a criminal investigation
@@ -492,6 +499,7 @@ NV-2201-0128::Exercising judgment-based engagement training
 NV-2201-0128::Identify and safely handle counter improvised explosive devices
 NV-2201-0128::Perform basic movements while engaging targets 
 NV-2201-0128::accomplish high risk security operations
+NV-2201-0128::identify and safely handle counter-improvised explosive devices; chemical, biological, radiological and nuclear training; casualty care; pulse check and blood sweep; control bleeding; airway management; nasopharyngeal, breathing, bandaging and splints; head and spine treatment; burns, environmental injuries; basic first aid; vehicle emergency egress drills; disease prevention; field sanitation; fractures; infection control; nuclear, biological, and chemical agents; tactical combat casualty care.
 NV-2202-0165::Demonstrate knowledge of general military and navy protocol 
 NV-2202-0165::basic swimming
 NV-2202-0165::fire fighting
@@ -504,9 +512,9 @@ PE 101::Per the experiential components of this class, students will demonstrate
 PE 101::Students will identify personal fitness goals and develop training plans.
 PE 101::Students will understand the relationship between nutrition and fitness.
 PE 101::Understand the individualistic properties of proper nutrition.
-PE 104:: Develop an overall understanding for conditioning in an aquatic environment
-PE 104:: Develop swimming techniques that can be used for lifelong fitness and safety
-PE 104:: Understand the competitive swimming strokes
+PE 104::Understand the competitive swimming strokes
+PE 104::Develop an overall understanding for conditioning in an aquatic environment
+PE 104::Develop swimming techniques that can be used for lifelong fitness and safety
 PE 104::Understand additional water exercises and strokes outside of the competitive realm
 PE 107::Follow the emergency action steps in any emergency.
 PE 107::Identify the major body systems to provide appropriate care.
