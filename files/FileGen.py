@@ -14,6 +14,26 @@ import datetime
 # To instance form gen one should provide the correct OC insturctor name, OC department,
 # military_course, and the oc_course
 
+# creating CopyBottom because I believe FileGen is gaining to many instance variables.
+class CopyBottom:
+
+
+    def __init__(self, table):
+        # used for copying the bottom of the table.
+        self.bottom_row = 2
+        self.bottom_col = 2
+        self.f_content = table.cell(4,0).paragraphs[0]
+        self.s_content = table.cell(5,0).paragraphs[0]
+        self.l_content = table.cell(6,0).paragraphs[0]
+        #self.cells_widths[1][2]
+
+    def Recreat_Bottom():
+        pass
+
+    def Delete_Bottom():
+        pass
+
+
 #creating a FileGen object will fill out the top of the 
 class FileGen:
 
@@ -39,13 +59,21 @@ class FileGen:
         self.mc_column = 1
         self.oc_row = 3
         self.oc_column = 0
+        self.total_oc_course = 0
+        self.total_columns = 6
         # used for sugestive guesses 
         self.no_match = 33
         self.moderate_match = 67
         self.strong_match = 100
-
+        
+        docBottomCopy = CopyBottom(self.comp_table)
         self.__Fill_Course_Info()
 
+    def __Add_Row(self, table):
+        if self.total_oc_course > 0:
+            table.add_row()
+            
+        
     # will add checkboxes the the correct columns
     def __Add_Checkbox(self, jst_outcome, percent):
         column_check_add = self.mc_column + 1
@@ -68,21 +96,25 @@ class FileGen:
     def __Sugested_Check(self, percent, font, row, para, run):
         if(percent >= 1 and percent <= self.no_match and row == 2):
             self.__Highlight(font)
-            self.Check_Mark(run)
+            self.__Check_Mark(run)
         if( percent > self.no_match and percent <= self.moderate_match and row == 3):
             self.__Highlight(font)
-            self.Check_Mark(run)
+            self.__Check_Mark(run)
         if(percent > self.moderate_match and percent <= self.strong_match and row == 4):
             self.__Highlight(font)
-            self.Check_Mark(run)
+            self.__Check_Mark(run)
 
-    def Check_Mark(self, run):
+    def __Check_Mark(self, run):
         run.clear()
-        run.add_text("\u2713")
+        run.add_text("\u2713")#this is the unicode for checkmark symbol.
 
     # used for highlighting runs.
     def __Highlight(self, font):
         font.highlight_color = WD_COLOR_INDEX.GRAY_25
+
+
+    def __Copy_Bottom(self):
+        pass
 
     # called during initualization fills in the top of the table.
     def __Fill_Course_Info(self):
@@ -116,11 +148,13 @@ class FileGen:
     # be the coresponding dictionary that holds percentages.
     def Like_Outcomes(self, c_outcome, jst_outcome):
         self.Olivet_Course_Outcomes(c_outcome)
+        self.__Add_Row(self.comp_table)
         for outcome in jst_outcome:
             print("outcome is: ", outcome)
             print("percent is: ", jst_outcome[outcome])
             self.JST_Outcomes(outcome, jst_outcome[outcome]) 
         self.mc_row += 1
+        self.total_oc_course += 1
 
     # will be used if we decide to implement emailing the form.
     def Email_Doc(self):
