@@ -14,25 +14,6 @@ import datetime
 # To instance form gen one should provide the correct OC insturctor name, OC department,
 # military_course, and the oc_course
 
-# creating CopyBottom because I believe FileGen is gaining to many instance variables.
-class CopyBottom:
-
-
-    def __init__(self, table):
-        # used for copying the bottom of the table.
-        self.bottom_row = 2
-        self.bottom_col = 2
-        self.f_content = table.cell(4,0).paragraphs[0]
-        self.s_content = table.cell(5,0).paragraphs[0]
-        self.l_content = table.cell(6,0).paragraphs[0]
-        #self.cells_widths[1][2]
-
-    def Recreat_Bottom():
-        pass
-
-    def Delete_Bottom():
-        pass
-
 
 #creating a FileGen object will fill out the top of the 
 class FileGen:
@@ -44,6 +25,9 @@ class FileGen:
         self.total_tables = self.doc.tables  # locating document tables
         # locating correct table for course comparason
         self.comp_table = self.total_tables[0]
+        self.comp_rows = self.comp_table.rows
+        self.comp_copy_row = self.comp_rows[3]
+        #
         self.date_cell = self.comp_table.cell(0, 0)
         self.military_course_cell = self.comp_table.cell(0, 1)
         # data for filling in top of doc.
@@ -66,14 +50,18 @@ class FileGen:
         self.moderate_match = 67
         self.strong_match = 100
         
-        docBottomCopy = CopyBottom(self.comp_table)
+        #docBottomCopy = CopyBottom(self.comp_table)
+        self.__Add_Row()
         self.__Fill_Course_Info()
 
-    def __Add_Row(self, table):
-        if self.total_oc_course > 0:
-            table.add_row()
-            
-        
+
+    #used to generate more rows at a given point.
+    def __Add_Row(self):
+        new_row = self.comp_table.add_row()
+        tbl = self.comp_table._tbl
+        tr = new_row._tr
+        tbl.insert(5, tr)
+               
     # will add checkboxes the the correct columns
     def __Add_Checkbox(self, jst_outcome, percent):
         column_check_add = self.mc_column + 1
@@ -148,7 +136,7 @@ class FileGen:
     # be the coresponding dictionary that holds percentages.
     def Like_Outcomes(self, c_outcome, jst_outcome):
         self.Olivet_Course_Outcomes(c_outcome)
-        self.__Add_Row(self.comp_table)
+        self.__Add_Row()
         for outcome in jst_outcome:
             print("outcome is: ", outcome)
             print("percent is: ", jst_outcome[outcome])
