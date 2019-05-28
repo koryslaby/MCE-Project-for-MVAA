@@ -1,6 +1,9 @@
 from docx import Document
-from docx.shared import Inches, Pt
+from docx.shared import Inches, Pt, RGBColor
 from docx.enum.text import WD_COLOR_INDEX
+from docx.enum.dml import MSO_THEME_COLOR
+from docx.dml.color import ColorFormat
+from docx.text.run import Font, Run
 from docx.enum.text import WD_ALIGN_PARAGRAPH #does not work for ryans pycharm
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT #this one works for ryans pycharm
 import datetime
@@ -13,7 +16,6 @@ import datetime
 # template file must be in the same directory or its location specified.
 # To instance form gen one should provide the correct OC insturctor name, OC department,
 # military_course, and the oc_course
-
 
 #creating a FileGen object will fill out the top of the 
 class FileGen:
@@ -51,16 +53,18 @@ class FileGen:
         self.strong_match = 100
         
         #docBottomCopy = CopyBottom(self.comp_table)
-        self.__Add_Row()
+        #self.__Add_Row()
         self.__Fill_Course_Info()
 
 
     #used to generate more rows at a given point.
     def __Add_Row(self):
+        print("creating new row")
         new_row = self.comp_table.add_row()
         tbl = self.comp_table._tbl
         tr = new_row._tr
-        tbl.insert(5, tr)
+        print(self.total_oc_course)
+        tbl.insert(5 + self.total_oc_course, tr)
                
     # will add checkboxes the the correct columns
     def __Add_Checkbox(self, jst_outcome, percent):
@@ -83,26 +87,26 @@ class FileGen:
     # a percentage determined by nltk to highlight a sugested box to check.
     def __Sugested_Check(self, percent, font, row, para, run):
         if(percent >= 1 and percent <= self.no_match and row == 2):
-            self.__Highlight(font)
+            #self.__Highlight(font)
             self.__Check_Mark(run)
         if( percent > self.no_match and percent <= self.moderate_match and row == 3):
-            self.__Highlight(font)
+            #self.__Highlight(font)
             self.__Check_Mark(run)
         if(percent > self.moderate_match and percent <= self.strong_match and row == 4):
-            self.__Highlight(font)
+            #self.__Highlight(font)
             self.__Check_Mark(run)
 
+    # adds a checkmark for sugestive checking.
     def __Check_Mark(self, run):
         run.clear()
+        font = run.font
+        font.color.theme_color = MSO_THEME_COLOR.TEXT_1
+        font.color.rgb = RGBColor(211,211,211)# makes the checkmards light gray
         run.add_text("\u2713")#this is the unicode for checkmark symbol.
 
     # used for highlighting runs.
     def __Highlight(self, font):
         font.highlight_color = WD_COLOR_INDEX.GRAY_25
-
-
-    def __Copy_Bottom(self):
-        pass
 
     # called during initualization fills in the top of the table.
     def __Fill_Course_Info(self):
@@ -116,6 +120,9 @@ class FileGen:
 
     # used for entering individual Olivet course outcomes
     def Olivet_Course_Outcomes(self, c_outcome):
+        if self.total_oc_course >= 1:
+            self.__Add_Row()
+        self.total_oc_course +=1
         self.oc_outcome_cell = self.comp_table.cell(
             self.oc_row, self.oc_column)
         self.oc_outcome_cell.text = c_outcome
@@ -136,13 +143,9 @@ class FileGen:
     # be the coresponding dictionary that holds percentages.
     def Like_Outcomes(self, c_outcome, jst_outcome):
         self.Olivet_Course_Outcomes(c_outcome)
-        self.__Add_Row()
         for outcome in jst_outcome:
-            print("outcome is: ", outcome)
-            print("percent is: ", jst_outcome[outcome])
             self.JST_Outcomes(outcome, jst_outcome[outcome]) 
         self.mc_row += 1
-        self.total_oc_course += 1
 
     # will be used if we decide to implement emailing the form.
     def Email_Doc(self):
