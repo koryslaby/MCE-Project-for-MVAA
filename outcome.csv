@@ -1,11 +1,29 @@
-CourseNumber::OutcomeDescription
-A-830-0030::Basic first aid, land navigation, military navigation, military communication, firearm safety, 
-A-830-0030::Demonstrate knowledge of combat mind set, Chemical, biological, radiological and nuclear training.
+A-830-0030::Basic first aid
+A-830-0030::land navigation
+A-830-0030::military navigation
+A-830-0030::military communication
+A-830-0030::firearm safety
+A-830-0030::Demonstrate knowledge of combat mind set
+A-830-0030::Chemical, biological, radiological and nuclear training.
 A-830-0030::Exercising judgment-based engagement training 
 A-830-0030::Identify and safely handle counter improvised explosive devices
 A-830-0030::Perform basic movements while engaging targets 
 A-830-0030::accomplish high risk security operations
-A-830-0030::identify and safely handle counter-improvised explosive devices; chemical, biological, radiological and nuclear training; casualty care; pulse check and blood sweep; control bleeding; airway management; nasopharyngeal, breathing, bandaging and splints; head and spine treatment; burns, environmental injuries; basic first aid; vehicle emergency egress drills; disease prevention; field sanitation; fractures; infection control; nuclear, biological, and chemical agents; tactical combat casualty care.
+A-830-0030::casualty care;
+A-830-0030::pulse check and blood sweep
+A-830-0030::control bleeding
+A-830-0030::airway management
+A-830-0030::nasopharyngeal breathing
+A-830-0030::bandaging and splints
+A-830-0030::head and spine treatment
+A-830-0030::burns, environmental injuries
+A-830-0030::vehicle emergency egress drills
+A-830-0030::disease prevention
+A-830-0030::field sanitation
+A-830-0030::fractures
+A-830-0030::infection control
+A-830-0030::nuclear, biological, and chemical agents
+A-830-0030::tactical combat casualty care.
 AR-1601-0277::dispense and retrive hose lines
 AR-1601-0277::distribute aviation fuel
 AR-1601-0277::ensure maintenance of safety and environmental conditions during operations
@@ -37,7 +55,6 @@ AR-2201-0399::employ land navigating skills
 AR-2201-0399::execude self defense 
 AR-2201-0399::execute marksmanship skills
 AR-2201-0399::first aid
-AR-2201-0399::first aid
 AR-2201-0399::landmine defense
 AR-2201-0399::marksmanship 
 AR-2201-0399::military communication 
@@ -46,8 +63,9 @@ AR-2201-0399::skills to perform as a military soldier in a combat envirnment
 AR-2201-0399::tactical navigation
 AR-2201-0399::weapons skills
 AR-2201-0603::The student will be able to demonstrate counseling techniques used when evaluating subordinate behavior; administer a training program; identify various management techniques, discuss traits of good leadership; practice team development exercises; and outline and explain the organizational vision.
+AR-2201-0603::audiovisual materials
 AR-2201-0603::battle focused training, map reading, field training
-AR-2201-0603::function as a junior level leader with essential skills in leadership, training, warfighting and administrarionaudiovisual materials
+AR-2201-0603::function as a junior level leader with essential skills in leadership, training, warfighting and administration
 ART 101::be able to apply the elements of design and principles of organization in the analysis of works of art over time and across cultures and to have developed an appreciation for the universality of image-making
 ART 101::have a deeper appreciation of the visual arts and their myriad functions in the history
 ART 101::have an understanding of the basic elements of design and principles of organization that are used in visual art
@@ -55,8 +73,8 @@ ART 101::have gained experience in research, writing and orally presenting a the
 ART 101::of humankind (social, political, economic, religious, etc.)
 ART 101::to have gained experience in group work and collaboration through a thematic project in visual art
 ART 101::understand the various subject matter categories and degrees of abstraction in visual art
-BIO 211:: Students can communicate ideas pertaining to human anatomy effectively
 BIO 211::Students can build the appropriate vocabulary to effectively communicate information related to anatomy
+BIO 211::Students can communicate ideas pertaining to human anatomy effectively
 BIO 211::Students can follow pathways, such as blood flow and neural stimulation, through the anatomical structures that make the specific pathway
 BIO 211::Students can recognize and describe the major organ systems of the body and the significant anatomical structures within those systems
 BIO 211::Students can recognize the anatomical structures described in class and explain their location using correct terminology
@@ -72,21 +90,25 @@ BIO 213::Students can recognize the anatomical structures described in class and
 BUS 200::Attain basic understanding of small business structure
 BUS 200::Develop basic understanding of e-business
 BUS 200::Discuss international business and trade
-BUS 200::Discuss international business and trade
-BUS 200::Examine ethical and social responsibility in business
 BUS 200::Examine ethical and social responsibility in business
 BUS 200::Identify key management functions and types of leadership
 BUS 200::Summarize the types of business ownerships and their advantages/disadvantages
 BUS 200::Understand business economic systems
-BUS 200::Understand business economic systems
 BUS 200::Understand the “Human Resource” function in business
-BUS 201::Describe the role of accounting concepts and principles in businesses.
-BUS 201::Analyze and record basic business transactions.
-BUS 201::Perform period-end adjustments and prepare financial statements.
-BUS 201::Use appropriate sources to find accounting information for an organization.
-BUS 201::Prepare appropriate entries for accounts receivable and recognition of bad debts.
+BUS 201::Account for merchandising operations and track inventory using different valuation models
 BUS 201::Account for merchandising operations and track inventory using different valuation models.
+BUS 201::Analyze and record basic business transactions
+BUS 201::Analyze and record basic business transactions.
+BUS 201::Describe the role of accounting concepts and principles in businesses
+BUS 201::Describe the role of accounting concepts and principles in businesses.
+BUS 201::Illustrate and record the use of debt and equity financing in a corporate environment
 BUS 201::Illustrate and record the use of debt and equity financing in a corporate environment.
+BUS 201::Perform period-end adjustments and prepare financial statements
+BUS 201::Perform period-end adjustments and prepare financial statements.
+BUS 201::Prepare appropriate entries for accounts receivable and recognition of bad debts
+BUS 201::Prepare appropriate entries for accounts receivable and recognition of bad debts.
+BUS 201::Use appropriate sources to find accounting information for an organization
+BUS 201::Use appropriate sources to find accounting information for an organization.
 BUS 202::Analyze long-term capital budgeting decisions and develop recommendations
 BUS 202::Calculate and report product costs, and determine cost flows through a company
 BUS 202::Classify cost behavior and analyze cost-volume-profit relationships 
@@ -127,17 +149,9 @@ BUS 490:: Developing evaluation strategies and contingency plans.
 BUS 490::Analyzing strategies and justifying recommendations 
 BUS 490::Conducting external audits
 BUS 490::Determining and prioritizing a firm’s internal strengths and weaknesses. 
-BUS 490::Determining and prioritizing a firm’s internal strengths and weaknesses. 
 BUS 490::Establishing long-term objectives 
 BUS 490::Implementing Strategies
 BUS 490::Writing excellent vision and mission 
-BUS 201::Account for merchandising operations and track inventory using different valuation models
-BUS 201::Analyze and record basic business transactions
-BUS 201::Describe the role of accounting concepts and principles in businesses
-BUS 201::Illustrate and record the use of debt and equity financing in a corporate environment
-BUS 201::Perform period-end adjustments and prepare financial statements
-BUS 201::Prepare appropriate entries for accounts receivable and recognition of bad debts
-BUS 201::Use appropriate sources to find accounting information for an organization
 CEM 111::Students can communicate with their peers to solve problems within a group setting, while taking on the role of manager, spokesperson, reader, or equipment manager.
 CEM 111::Students can identify and balance chemical reactions.
 CEM 111::Students can identify and describe the properties of liquids, solids, gases, and solutions.
@@ -158,16 +172,10 @@ CJ 111::Describe and explain the three correctional ideologies::  punishment, tr
 CJ 111::Describe the correctional “filter”
 CJ 111::Identify and apply alternatives to imprisonment in case studies
 CJ 220::Articulated a definition of terrorism
-CJ 220::Articulated a definition of terrorism
-CJ 220::Discuss the American strategy to address both international and domestic terrorism. 
 CJ 220::Discuss the American strategy to address both international and domestic terrorism. 
 CJ 220::Recognize the difference between international and domestic terrorism.
-CJ 220::Recognize the difference between international and domestic terrorism.
-CJ 220::Recognize the structure of a terrorist organization, to include the psychological and social make up.
 CJ 220::Recognize the structure of a terrorist organization, to include the psychological and social make up.
 CJ 220::Research the origins of terrorism in different regions of the world.
-CJ 220::Research the origins of terrorism in different regions of the world.
-CJ 220::Understand the role of media another technology in terrorist activity
 CJ 220::Understand the role of media another technology in terrorist activity
 CJ 230:: The student will understand issues related to court decisions which either support or reject police conduct to include::  search and seizure, interview and interrogation, rules of arrest, traffic stops.
 CJ 230::Recognize the importance of physical and mental conditioning of a police officer.   
@@ -176,14 +184,14 @@ CJ 230::The student will demonstrate the best and safest manner to handle a vari
 CJ 230::Understand issues related to streel level policing.   The student will be able to analyze issues related to streel level policing.    
 CJ 280::Analyze the concepts of criminal law and apply the knowledge to present day situations
 CJ 280::Explain the difference between civil and criminal law
-CJ 280::Identify, analyze, and synthesize the elements of various crimes in order to prosecute or defend a client
 CJ 280::Identify and evaluate how the law is applied in society
 CJ 280::Identify and evaluate how the law is applied in the criminal justice system.
-CJ 285::Describe the impact of law on correction personnel.
+CJ 280::Identify, analyze, and synthesize the elements of various crimes in order to prosecute or defend a client
 CJ 285::Analyze legal cases that have set precedent in the correction field.
 CJ 285::Apply legal doctrines to situations that may arise in the environment of corrections.
-CJ 285::Identify and describe how constitutional law affects you, and the lives of staff, prisoners, ex-convicts, and administrators.
 CJ 285::Apply risk management strategies to reduce the risk of exposure to liability.
+CJ 285::Describe the impact of law on correction personnel.
+CJ 285::Identify and describe how constitutional law affects you, and the lives of staff, prisoners, ex-convicts, and administrators.
 CJ 285::Understand prisoners’ rights in relation to constitutional law.
 CJ 320::Analyze how differences are constructed by people and can be changed by people.
 CJ 320::Students will be able to analyze and describe the norm or standard in our society that reflects power within our culture.
@@ -197,20 +205,15 @@ CJ 360::The student will be familiar with the ethical and legal components of a 
 CJ 360::The student will be introduced to investigative techniques for a variety of criminal behavior.
 CJ 360::The student will demonstrate an understanding of the criminal investigative process, and its application to the criminal justice system.
 CJ 370::Demonstrate an understanding of budgeting
-CJ 370::Demonstrate an understanding of budgeting
-CJ 370::Recognize the importance of organizational planning
 CJ 370::Recognize the importance of organizational planning
 CJ 370::The student will be able to contrast the difference between leadership and management
-CJ 370::The student will be able to contrast the difference between leadership and management
 CJ 370::Understand the role of organizational culture, and its impact on police departments, and society as a whole
-CJ 370::Understand the role of organizational culture, and its impact on police departments, and society as a whole
-CJ 370::Understand the role of unions and how a police chief interacts with them.
 CJ 370::Understand the role of unions and how a police chief interacts with them.
 CJ 400::Analyze the current controversies within the CJS lay the foundation for the future
 CJ 400::Explain the difference between moral and ethical theories, dilemmas and codes
-CJ 400::Identify, analyze, and synthesize the major ethical issues in the CJS and its influence on the public;
 CJ 400::Identify and apply appropriate ethical philosophies to differing CJS scenarios
 CJ 400::Identify and evaluate how ethics and integrity, are associated with managing risk in the CJS
+CJ 400::Identify, analyze, and synthesize the major ethical issues in the CJS and its influence on the public;
 CJ 401::Analyze current social issues that have impacted professionals in the field of criminal justice in the United States and abroad
 CJ 401::Analyze the impact the media has on criminal justice practitioners in relation to social issues
 CJ 401::Apply legal doctrines to the current social issues being discussed
@@ -241,44 +244,22 @@ CJ 440::Students will be able to de-escalate a potentially violent situation
 CJ 440::Students will demonstrate the proper techniques involved with pressure points control tactics, joint manipulation and soft/hard hand control
 CJ 440::Students will examine how inappropriate use of force can affect the department and the individual
 CJ 490::Analyze a current problem in Criminal Justice and devise an original solution
-CJ 490::Analyze a current problem in Criminal Justice and devise an original solution
-CJ 490::Assess how education will influence their future career choices. 
 CJ 490::Assess how education will influence their future career choices. 
 CJ 490::Demonstrate proper interview techniques.
-CJ 490::Demonstrate proper interview techniques.
-CJ 490::Describe how other’s perceptions influence the ability to gain employment.
 CJ 490::Describe how other’s perceptions influence the ability to gain employment.
 CJ 490::Describe the career options that exist in the criminal justice field. 
-CJ 490::Describe the career options that exist in the criminal justice field. 
-CJ 490::Describe the role ethics play in law enforcement and security occupations.
 CJ 490::Describe the role ethics play in law enforcement and security occupations.
 CJ 490::Prepare a cover letter, references, and follow-up letter
-CJ 490::Prepare a cover letter, references, and follow-up letter
-CJ 490::Prepare a resume suitable for use in future job interviews.
 CJ 490::Prepare a resume suitable for use in future job interviews.
 CJP 285::Students will be able to analyze a written argument
-CJP 285::Students will be able to analyze a written argument
-CJP 285::Students will be able to analyze legal cases that have set precedent in the correction field
-CJP 285::Students will be able to analyze legal cases that have set precedent in the correction field
 CJP 285::Students will be able to analyze legal cases that have set precedent in the correction field
 CJP 285::Students will be able to apply conventions of Standard English and APA format in order to communicate clearly to an audience
-CJP 285::Students will be able to apply conventions of Standard English and APA format in order to communicate clearly to an audience
-CJP 285::Students will be able to apply legal doctrines to situations that may arise in the environment of corrections
-CJP 285::Students will be able to apply legal doctrines to situations that may arise in the environment of corrections
 CJP 285::Students will be able to apply legal doctrines to situations that may arise in the environment of corrections
 CJP 285::Students will be able to apply risk management strategies to reduce the risk of exposure to liability
-CJP 285::Students will be able to apply risk management strategies to reduce the risk of exposure to liability
-CJP 285::Students will be able to demonstrate use of databases and evaluate reference material and sources for accuracy, relevance and quality
 CJP 285::Students will be able to demonstrate use of databases and evaluate reference material and sources for accuracy, relevance and quality
 CJP 285::Students will be able to describe the impact of law on correction personnel
-CJP 285::Students will be able to describe the impact of law on correction personnel
-CJP 285::Students will be able to describe the impact of law on correction personnel
-CJP 285::Students will be able to identify and describe how constitutional law affects you, and the lives of staff, prisoners, ex- convicts, and administrators
-CJP 285::Students will be able to identify and describe how constitutional law affects you, and the lives of staff, prisoners, ex- convicts, and administrators
 CJP 285::Students will be able to identify and describe how constitutional law affects you, and the lives of staff, prisoners, ex-convicts, and administrators
 CJP 285::Students will be able to understand prisoners’ rights in relation to constitutional law
-CJP 285::Students will be able to understand prisoners’ rights in relation to constitutional law
-CJP 285::Students will be able to write essays that appropriately use a thesis/main claim, reasons, evidence and source material, and that acknowledge and respond to a counter- argument
 CJP 285::Students will be able to write essays that appropriately use a thesis/main claim, reasons, evidence and source material, and that acknowledge and respond to a counter- argument
 CS 110::Be proficient in basic usage of Microsoft Access, Word, PowerPoint, and Excel
 CS 110::Have completed one half of a two course CIS sequence designed to move students towards the Microsoft Office Certification exam
@@ -287,18 +268,13 @@ CS 110::Use Access to create a database file consisting of at least two tables u
 CS 110::Use Excel to enter text, numbers and formulas into a worksheet applying to business situations. Create and edit Excel charts to graphically present numerical data. Format a worksheet using number formats, borders, color, fonts and conditional formats. Use the Excel SUM, AVERAGE, MAX, MIN, IF, and NOW functions to display desired calculations. Create and copy formulas using relative and absolute cell references. Edit worksheets and add new worksheets to a workbook, rename and rearrange sheets.
 CS 110::Use PowerPoint to create single and multi-level bulleted list slides. Use the PowerPoint ribbon to change Layouts and Themes in presentations. Insert and size clip art, photographs, and shapes into a presentation. Create and run a presentation with slide transitions. Print PowerPoint slides and handouts in a variety of formats.
 CS 110::Use Word to format text, paragraphs and document elements. Identify and use correct sequencing and spacing of all required business letter components. Format a research paper with footnotes and bibliographical list of sources. Insert a Word table, enter data and format the table. Streamline document creation using templates. Insert and format a graphic or word art in Word documents.
-ENG 249::Analyze and use various rhetorical devices and elements related to creative nonfiction writing
+CourseNumber::OutcomeDescription
 ENG 249::Analyze and use various rhetorical devices and elements related to creative nonfiction writing
 ENG 249::Create written work demonstrating formal elements of creative writing
-ENG 249::Create written work demonstrating formal elements of creative writing
-ENG 249::Define and identify literary terminology and ethical concerns
 ENG 249::Define and identify literary terminology and ethical concerns
 ENG 249::Explain and demonstrate how diction and syntax affect written works
-ENG 249::Explain and demonstrate how diction and syntax affect written works
-ENG 249::Use feedback effectively and constructively in revision
 ENG 249::Use feedback effectively and constructively in revision
 HWL 240::Basic taping skills
-HWL 240::Injury prevention
 HWL 240::Injury prevention
 HWL 240::Learn management skills
 HWL 240::Learn to care for specific sports conditions
@@ -306,8 +282,8 @@ HWL 260::Identify bones and their landmarks.
 HWL 260::Identify joint movements and muscle activity during execution of common movement and exercise patterns.
 HWL 260::Identify origins, insertions, and actions of skeletal muscles.
 HWL 260::Understand and use standard nomenclature.
-HWL 260::Understand the classification, structure, and function of joints.
 HWL 260::Understand the classification, structure, and function of connective tissues including ligaments, cartilage, fascia, and bursae.
+HWL 260::Understand the classification, structure, and function of joints.
 HWL 260::Understand the structure and function of the systems of the human body and how they relate to human movement.
 HWL 354::The student can demonstrate ability to comprise, compile, and comprehend consent forms
 HWL 354::The student can demonstrate an understanding of the concepts of running and managing a facility
@@ -334,59 +310,31 @@ IDS 112::Write argumentative essays that develop a thesis/main claim, use techni
 IDS 151::compare, in discussion and in writing, multiple perspectives people may have on a particular social issue, taking into account the role of race, class gender, sexual identity, and privilege
 IDS 151::define privilege, explain types of privilege a person may have within two particular communities, and examine in writing the ways they are privileged and not privileged in at least two ways
 IDS 151::demonstrate critical thinking skills, through discussion and in writing, showing the ability to analyze the truth and acceptability of evidence and support and the significance of language, while avoiding argumentative fallacies and errors
-IDS 151::describe, in writing, their own values and beliefs and the values and beliefs of others, and explain how these values and beliefs have come into being
-IDS 151::describe, in writing, their current and future roles and responsibilities within various communities, including the global community
 IDS 151::describe, in writing, the components of the Olivet Compact and the ways in which their personal commitments and values align with these responsibilities
-IDS 211::Acquire an understanding of issues of social justice, diversity, and multiculturalism.
+IDS 151::describe, in writing, their current and future roles and responsibilities within various communities, including the global community
+IDS 151::describe, in writing, their own values and beliefs and the values and beliefs of others, and explain how these values and beliefs have come into being
 IDS 211::Acquire an understanding of issues of social justice, diversity, and multiculturalism.
 IDS 211::Acquire an understanding of watershed moments in history and the impact of those events on a multiplicity of issues. 
-IDS 211::Acquire an understanding of watershed moments in history and the impact of those events on a multiplicity of issues. 
-IDS 211::Acquire an understanding of what it means to be, or to have been, a citizen and to act on that understanding.
 IDS 211::Acquire an understanding of what it means to be, or to have been, a citizen and to act on that understanding.
 IDS 211::Acquire an understanding that the creative arts are both the tangible and intangible markers of a civilization’s values and priorities.
-IDS 211::Acquire an understanding that the creative arts are both the tangible and intangible markers of a civilization’s values and priorities.
-IDS 211::Acquiring the skills and tools you can use to study and analyze complex Human societies, ancient and modern.
 IDS 211::Acquiring the skills and tools you can use to study and analyze complex Human societies, ancient and modern.
 IDS 251::be able to explain what sustainable living means, steps one might take to create a more sustainable lifestyle, and reasons for doing so
-IDS 251::be able to explain what sustainable living means, steps one might take to create a more sustainable lifestyle, and reasons for doing so
-IDS 251::evaluate their personal impact on the environment and the impact of select institutions
 IDS 251::evaluate their personal impact on the environment and the impact of select institutions
 IDS 251::gather information needed to address a research question or problem, and evaluate their sources for accuracy, relevance and quality
-IDS 251::gather information needed to address a research question or problem, and evaluate their sources for accuracy, relevance and quality
-IDS 251::participate in informed discussions that further their own learning and the learning of others in the group
 IDS 251::participate in informed discussions that further their own learning and the learning of others in the group
 IDS 251::read, hear and view information carefully in order to form critical responses
-IDS 251::read, hear and view information carefully in order to form critical responses
-IDS 251::understand how the choices we make every day have a wider impact on others and the planet
 IDS 251::understand how the choices we make every day have a wider impact on others and the planet
 IDS 251::use quotations and paraphrasing from relevant outside sources as necessary to support their claims and maintain intellectual integrity
-IDS 251::use quotations and paraphrasing from relevant outside sources as necessary to support their claims and maintain intellectual integrity
-IDS 251::work in a group to raise community interest in sustainable living
 IDS 251::work in a group to raise community interest in sustainable living
 IDS 251::write informal reflections as well as complete expository and argumentative essays that follow a recognizable structure and demonstrate clear purpose and an understanding of audience
-IDS 251::write informal reflections as well as complete expository and argumentative essays that follow a recognizable structure and demonstrate clear purpose and an understanding of audience
-IDS 499::Demonstrate ethical media practices in team work, individual meetings and media projects; Understand the history and role of journalism and mass communication in a global society in order to select, produce and publish ethical journalism/media content
 IDS 499::Demonstrate ethical media practices in team work, individual meetings and media projects; Understand the history and role of journalism and mass communication in a global society in order to select, produce and publish ethical journalism/media content
 IDS 499::Knowledge of print, video and audio media presentations, equipment and programs; teamwork developed in practice of standard reporting and information gathering techniques across multiple platforms, demonstrating the ability to use technology appropriate to the medium
-IDS 499::Knowledge of print, video and audio media presentations, equipment and programs; teamwork developed in practice of standard reporting and information gathering techniques across multiple platforms, demonstrating the ability to use technology appropriate to the medium
-IDS 499::Progress on Resume and academic plans
 IDS 499::Progress on Resume and academic plans
 IDS 499::Write and speak using standard English grammar handbook rules and AP and ECHO Style appropriate for communication professionals, audiences and the purposes they serve
-IDS 499::Write and speak using standard English grammar handbook rules and AP and ECHO Style appropriate for communication professionals, audiences and the purposes they serve
-IRM 221::Describe insurance markets, company operations and state and federal regulations
-IRM 221::Describe insurance markets, company operations and state and federal regulations
 IRM 221::Describe insurance markets, company operations and state and federal regulations
 IRM 221::Describe the structure of the insurance contract and know how to read an insurance policy
-IRM 221::Describe the structure of the insurance contract and know how to read an insurance policy
-IRM 221::Describe the structure of the insurance contract and know how to read an insurance policy
-IRM 221::Explain standard coverage, focusing on property/casualty policies
-IRM 221::Explain standard coverage, focusing on property/casualty policies
 IRM 221::Explain standard coverage, focusing on property/casualty policies
 IRM 221::Explain the concepts of risk and insurance
-IRM 221::Explain the concepts of risk and insurance
-IRM 221::Explain the concepts of risk and insurance
-IRM 221::Identify the process of traditional risk management, enterprise risk management and alternatives to insurance
-IRM 221::Identify the process of traditional risk management, enterprise risk management and alternatives to insurance
 IRM 221::Identify the process of traditional risk management, enterprise risk management and alternatives to insurance
 IRM 322::Auto No fault laws, regulation, medical, uninsured and underinsured coverages and endorsements
 IRM 322::Describe and analyze provisions of personal lines property and general liability
@@ -408,8 +356,8 @@ IRM 340::Effectively write a roof claim estimate.
 IRM 340::Effectively write a total house fire estimate
 IRM 340::Effectively write an interior water claim estimate
 IRM 340::Identify the importance of customer service and good faith in the contract application. 
-IRM 340::Properly investigate, evaluate and settle a complex liability claim
 IRM 340::Properly investigate and evaluate a simple liability claim.
+IRM 340::Properly investigate, evaluate and settle a complex liability claim
 IRM 454::Analyze risk taking appetite and ability for enterprise
 IRM 454::Describe the risk management process
 IRM 454::Identify risk exposure utilizing financial statement analysis
@@ -493,13 +441,32 @@ NV-1710-0118:::perform, under supervision, masonry construction, light frame con
 NV-1710-0118:::pre-engineered building construction 
 NV-1710-0118:::wood frame structure preservation
 NV-1710-0118::read and understand special drawings and specificatins for light frame construction, heavy timber bridge construction, and pre-engineered buildings construction 
-NV-2201-0128::Basic first aid, land navigation, military navigation, military communication, firearm safety, 
-NV-2201-0128::Demonstrate knowledge of combat mind set, Chemical, biological, radiological and nuclear training.  
+NV-2201-0128::Basic first aid
+NV-2201-0128::land navigation
+NV-2201-0128::military navigation
+NV-2201-0128::military communication
+NV-2201-0128::firearm safety
+NV-2201-0128::Demonstrate knowledge of combat mind set
+NV-2201-0128::Chemical, biological, radiological and nuclear training.
 NV-2201-0128::Exercising judgment-based engagement training 
 NV-2201-0128::Identify and safely handle counter improvised explosive devices
 NV-2201-0128::Perform basic movements while engaging targets 
 NV-2201-0128::accomplish high risk security operations
-NV-2201-0128::identify and safely handle counter-improvised explosive devices; chemical, biological, radiological and nuclear training; casualty care; pulse check and blood sweep; control bleeding; airway management; nasopharyngeal, breathing, bandaging and splints; head and spine treatment; burns, environmental injuries; basic first aid; vehicle emergency egress drills; disease prevention; field sanitation; fractures; infection control; nuclear, biological, and chemical agents; tactical combat casualty care.
+NV-2201-0128::casualty care
+NV-2201-0128::pulse check and blood sweep
+NV-2201-0128::control bleeding
+NV-2201-0128::airway management
+NV-2201-0128::nasopharyngeal breathing
+NV-2201-0128::bandaging and splints
+NV-2201-0128::head and spine treatment
+NV-2201-0128::burns, environmental injuries
+NV-2201-0128::vehicle emergency egress drills
+NV-2201-0128::disease prevention
+NV-2201-0128::field sanitation
+NV-2201-0128::fractures
+NV-2201-0128::infection control
+NV-2201-0128::nuclear, biological, and chemical agents
+NV-2201-0128::tactical combat casualty care.
 NV-2202-0165::Demonstrate knowledge of general military and navy protocol 
 NV-2202-0165::basic swimming
 NV-2202-0165::fire fighting
@@ -512,10 +479,10 @@ PE 101::Per the experiential components of this class, students will demonstrate
 PE 101::Students will identify personal fitness goals and develop training plans.
 PE 101::Students will understand the relationship between nutrition and fitness.
 PE 101::Understand the individualistic properties of proper nutrition.
-PE 104::Understand the competitive swimming strokes
 PE 104::Develop an overall understanding for conditioning in an aquatic environment
 PE 104::Develop swimming techniques that can be used for lifelong fitness and safety
 PE 104::Understand additional water exercises and strokes outside of the competitive realm
+PE 104::Understand the competitive swimming strokes
 PE 107::Follow the emergency action steps in any emergency.
 PE 107::Identify the major body systems to provide appropriate care.
 PE 107::Identify ways to prevent injury and / or illness.

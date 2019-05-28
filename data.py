@@ -22,7 +22,7 @@ with open("course.csv") as f:
     lines = f.readlines()
     for line in lines[1:]:
         inst2 = line.strip().split('::')
-        # print(inst2)
+        print(inst2)
         sql = "insert into Course (CourseNumber, CourseName, CourseDescription, CourseCredit, CourseEquivalenceNonOC, InstitutionID) values (?, ?, ?, ?, ?, ?);"
         cur.execute(sql, (inst2[0], inst2[1], inst2[2], inst2[3], inst2[4], inst2[5]))
 
