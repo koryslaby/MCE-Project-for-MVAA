@@ -52,8 +52,7 @@ class FileGen:
         self.moderate_match = 67
         self.strong_match = 100
         
-        #docBottomCopy = CopyBottom(self.comp_table)
-        #self.__Add_Row()
+        self.line_spacing = 12
         self.__Fill_Course_Info()
 
 
@@ -76,13 +75,13 @@ class FileGen:
             run = para.add_run("\u2610")
             font = run.font
             self.__Sugested_Check(percent, font, i, para, run)
-            para_format = para.paragraph_format
-            para_format.space_before = Pt(1)
             if len(jst_outcome) > 50:
                 para.add_run("\n\n\n")
             else:
                 para.add_run("\n\n")
-            para_format.alignment = WD_ALIGN_PARAGRAPH.CENTER #if WD_ALIGN_PARAGRAPH doesnt work for you switch to WD_PARAGRAPH_ALIGNMENT
+            para.paragraph_format.line_spacing = Pt(self.line_spacing)
+            para.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER #if WD_ALIGN_PARAGRAPH doesnt work for you switch to WD_PARAGRAPH_ALIGNMENT
+
 
     # a percentage determined by nltk to highlight a sugested box to check.
     def __Sugested_Check(self, percent, font, row, para, run):
@@ -95,11 +94,13 @@ class FileGen:
         if(percent > self.moderate_match and percent <= self.strong_match and row == 4):
             #self.__Highlight(font)
             self.__Check_Mark(run)
+        para.paragraph_format.line_spacing = None
 
     # adds a checkmark for sugestive checking.
     def __Check_Mark(self, run):
         run.clear()
         font = run.font
+        print("font is: ", font)
         font.color.theme_color = MSO_THEME_COLOR.TEXT_1
         font.color.rgb = RGBColor(211,211,211)# makes the checkmards light gray
         run.add_text("\u2713")#this is the unicode for checkmark symbol.
@@ -125,7 +126,8 @@ class FileGen:
         self.total_oc_course +=1
         self.oc_outcome_cell = self.comp_table.cell(
             self.oc_row, self.oc_column)
-        self.oc_outcome_cell.text = c_outcome
+        para = self.oc_outcome_cell.paragraphs[0]
+        para.add_run(c_outcome)
         self.oc_row += 1
 
     # used for entering individual Military course outcomes
@@ -135,7 +137,12 @@ class FileGen:
             self.mc_row += 1
         self.mc_outcome_cell = self.comp_table.cell(
             self.mc_row, self.mc_column)
-        self.mc_outcome_cell.text += jst_outcome + "\n\n"
+        para = self.mc_outcome_cell.paragraphs[0]
+        para.paragraph_format.line_spacing = None
+        if para.text != "":
+            para.add_run("\n\n")
+        para.add_run(jst_outcome)
+        para.paragraph_format.line_spacing = Pt(self.line_spacing)
         self.__Add_Checkbox(jst_outcome, percent)
 
     # adds both the Olivet course outcomes with there coresponding military course outcomes.
