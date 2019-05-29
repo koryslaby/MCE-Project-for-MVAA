@@ -1,5 +1,5 @@
 from docx import Document
-from docx.shared import Inches, Pt, RGBColor
+from docx.shared import Inches, Pt, RGBColor, Length
 from docx.enum.text import WD_COLOR_INDEX
 from docx.enum.dml import MSO_THEME_COLOR
 from docx.dml.color import ColorFormat
@@ -7,6 +7,7 @@ from docx.text.run import Font, Run
 from docx.enum.text import WD_ALIGN_PARAGRAPH #does not work for ryans pycharm
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT #this one works for ryans pycharm
 import datetime
+import textwrap
 
 #pip3 install python-docx
 #pip3 install DateTime
@@ -23,12 +24,13 @@ class FileGen:
         # initializing variables to be used throught the generator
     def __init__(self, instructor_name, department, military_course, oc_course):
         # test.docx should be the name of the template file.
-        self.doc = Document('Test.docx')
+        self.doc = Document('Test2.docx')
         self.total_tables = self.doc.tables  # locating document tables
         # locating correct table for course comparason
         self.comp_table = self.total_tables[0]
         self.comp_rows = self.comp_table.rows
         self.comp_copy_row = self.comp_rows[3]
+        self.mc_outcome_cell = self.comp_table.cell(3,1)
         #
         self.date_cell = self.comp_table.cell(0, 0)
         self.military_course_cell = self.comp_table.cell(0, 1)
@@ -53,17 +55,20 @@ class FileGen:
         self.strong_match = 100
         
         self.line_spacing = 12
+        self.check_box_row_spacing = ""
+        self.mc_compare_cells_width = 2.67 # what the cell width is in inches.
+        # maximum_word_length used for calculating newlines for Military course outcomes.
+        self.maximum_word_length = 38 #39 manually calculated for font 11 width 2.67. 
+
+        self.__Determine_Maximum_Word_Length(self.mc_outcome_cell)
         self.__Fill_Course_Info()
 
-
-    #used to generate more rows at a given point.
+    #used to generate more rows for the use of comparason.
     def __Add_Row(self):
-        print("creating new row")
         new_row = self.comp_table.add_row()
         tbl = self.comp_table._tbl
         tr = new_row._tr
-        print(self.total_oc_course)
-        tbl.insert(5 + self.total_oc_course, tr)
+        tbl.insert(5 + self.total_oc_course, tr)#6 meens insert it at the 4th row. 7-5 e.t.c.
                
     # will add checkboxes the the correct columns
     def __Add_Checkbox(self, jst_outcome, percent):
@@ -75,13 +80,11 @@ class FileGen:
             run = para.add_run("\u2610")
             font = run.font
             self.__Sugested_Check(percent, font, i, para, run)
-            if len(jst_outcome) > 50:
-                para.add_run("\n\n\n")
-            else:
-                para.add_run("\n\n")
+            if self.check_box_row_spacing != "":
+                para.add_run(self.check_box_row_spacing)
             para.paragraph_format.line_spacing = Pt(self.line_spacing)
             para.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER #if WD_ALIGN_PARAGRAPH doesnt work for you switch to WD_PARAGRAPH_ALIGNMENT
-
+        self.check_box_row_spacing = ""
 
     # a percentage determined by nltk to highlight a sugested box to check.
     def __Sugested_Check(self, percent, font, row, para, run):
@@ -94,16 +97,15 @@ class FileGen:
         if(percent > self.moderate_match and percent <= self.strong_match and row == 4):
             #self.__Highlight(font)
             self.__Check_Mark(run)
-        para.paragraph_format.line_spacing = None
+        para.paragraph_format.line_spacing = Pt(self.line_spacing)
 
     # adds a checkmark for sugestive checking.
     def __Check_Mark(self, run):
         run.clear()
         font = run.font
-        print("font is: ", font)
         font.color.theme_color = MSO_THEME_COLOR.TEXT_1
         font.color.rgb = RGBColor(211,211,211)# makes the checkmards light gray
-        run.add_text("\u2713")#this is the unicode for checkmark symbol.
+        run.add_text("\u2713")# this is the unicode for checkmark symbol.
 
     # used for highlighting runs.
     def __Highlight(self, font):
@@ -130,7 +132,19 @@ class FileGen:
         para.add_run(c_outcome)
         self.oc_row += 1
 
-    # used for entering individual Military course outcomes
+    # for determining how each course outcome gets wraped.
+    def  __Determine_Maximum_Word_Length(self, cell):
+        cell_width = Length(cell.width).inches
+        self.maximum_word_length = (cell_width * 38) / 2.67 # these numbers are pulled from first doc       
+
+    # used for determining the amount for spaces for checkboxes.
+    def __Determine_Checkbox_Spaceing(self, run):
+        wrapper = textwrap.TextWrapper(width = self.maximum_word_length)
+        word_list = wrapper.wrap(text=run.text)
+        for element in word_list:
+            self.check_box_row_spacing += "\n"
+
+    # used for entering individual Military course outcomes.
     # used when the user wants to move to the next cell.
     def JST_Outcomes(self, jst_outcome, percent, new_cell=False):
         if new_cell == True:
@@ -141,7 +155,10 @@ class FileGen:
         para.paragraph_format.line_spacing = None
         if para.text != "":
             para.add_run("\n\n")
-        para.add_run(jst_outcome)
+            self.check_box_row_spacing = "\n"
+        self.check_box_row_spacing = "\n"
+        # used to determine checkbox spaces. Based on the different outcomes.
+        self.__Determine_Checkbox_Spaceing(para.add_run(jst_outcome))
         para.paragraph_format.line_spacing = Pt(self.line_spacing)
         self.__Add_Checkbox(jst_outcome, percent)
 
@@ -159,5 +176,5 @@ class FileGen:
         pass
 
     # used to save the document. Must call this to save document.
-    def Save_Doc(self):
-        self.doc.save('Test-Saved.docx')
+    def Save_Doc(self, doc_name='Test-Saved.docx'):
+        self.doc.save(doc_name)
