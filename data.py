@@ -3,12 +3,17 @@ import sqlite3
 con = sqlite3.connect('mce.sqlite3')
 cur = con.cursor()
 
-#data = []
-#with open("outcomedata.csv") as f:
-#	lines = f.readlines()
-#	for line in lines:
-#		indata = line.strip().split(':')
-#		print(indata[0])
+cur.execute('delete from institution;')
+cur.execute('delete from course;')
+cur.execute('delete from outcome;')
+cur.execute('delete from reviewer;')
+
+con.commit()
+
+con.close()
+
+con = sqlite3.connect('mce.sqlite3')
+cur = con.cursor()
 
 with open("institution.csv") as f:
     lines = f.readlines()
@@ -31,9 +36,17 @@ with open("outcome.csv") as f:
     for line in lines[1:]:
         inst3 = line.strip().split('::')
         # print(inst3)
-        sql = "insert into Outcome (OutcomeDescription, CourseNumber) values (?, ?);"
-        cur.execute(sql, (inst3[1], inst3[0]))
+        sql = "insert into Outcome (CourseNumber, OutcomeDescription) values (?, ?);"
+        cur.execute(sql, (inst3[0], inst3[1]))
 
+with open("reviewer.csv") as f:
+    lines = f.readlines()
+    for line in lines[1:]:
+        inst4 = line.strip().split('::')
+        # print(inst3)
+        sql = "insert into Reviewer (ReviewerName, ReviewerPhone, ReviewerEmail) values (?, ?, ?);"
+        cur.execute(sql, (inst4[0], inst4[1], inst4[2]))
+	
 con.commit()
 
 con.close()
