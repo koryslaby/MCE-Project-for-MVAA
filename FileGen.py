@@ -55,7 +55,7 @@ class FileGen:
         self.strong_match = 100
         
         self.line_spacing = 12
-        self.check_box_row_spacing = ""
+        self.check_box_row_spacing = "" # this variable gets added to and reset for the spacing of each row of checkboxes.
         self.mc_compare_cells_width = 2.67 # what the cell width is in inches.
         # maximum_word_length used for calculating newlines for Military course outcomes.
         self.maximum_word_length = 38 #39 manually calculated for font 11 width 2.67. 
@@ -133,20 +133,24 @@ class FileGen:
         self.oc_row += 1
 
     # for determining how each course outcome gets wraped.
-    def  __Determine_Maximum_Word_Length(self, cell):
+    def __Determine_Maximum_Word_Length(self, cell):
         cell_width = Length(cell.width).inches
-        self.maximum_word_length = (cell_width * 38) / 2.67 # these numbers are pulled from first doc       
+        self.maximum_word_length = (cell_width * 37) / 2.67 # these numbers are pulled from first doc       
 
     # used for determining the amount for spaces for checkboxes.
-    def __Determine_Checkbox_Spaceing(self, run):
+    def __Determine_Checkbox_Spaceing(self, run, new_spacing=True):
         wrapper = textwrap.TextWrapper(width = self.maximum_word_length)
         word_list = wrapper.wrap(text=run.text)
         for element in word_list:
-            self.check_box_row_spacing += "\n"
+            if new_spacing == True:
+                self.check_box_row_spacing += "\n"
+            else:
+                self.check_box_row_spacing = ""
+            
 
     # used for entering individual Military course outcomes.
     # used when the user wants to move to the next cell.
-    def JST_Outcomes(self, jst_outcome, percent, new_cell=False):
+    def JST_Outcomes(self, jst_outcome, percent, new_cell=False, new_spacing=True):
         if new_cell == True:
             self.mc_row += 1
         self.mc_outcome_cell = self.comp_table.cell(
@@ -156,9 +160,12 @@ class FileGen:
         if para.text != "":
             para.add_run("\n\n")
             self.check_box_row_spacing = "\n"
-        self.check_box_row_spacing = "\n"
+        if new_spacing == True:
+            self.check_box_row_spacing = "\n"
+        else:
+            self.check_box_row_spacing = ""
         # used to determine checkbox spaces. Based on the different outcomes.
-        self.__Determine_Checkbox_Spaceing(para.add_run(jst_outcome))
+        self.__Determine_Checkbox_Spaceing(para.add_run(jst_outcome), new_spacing=new_spacing)
         para.paragraph_format.line_spacing = Pt(self.line_spacing)
         self.__Add_Checkbox(jst_outcome, percent)
 
@@ -167,8 +174,13 @@ class FileGen:
     # be the coresponding dictionary that holds percentages.
     def Like_Outcomes(self, c_outcome, jst_outcome):
         self.Olivet_Course_Outcomes(c_outcome)
+        key = 1
         for outcome in jst_outcome:
-            self.JST_Outcomes(outcome, jst_outcome[outcome]) 
+            if key != len(jst_outcome):
+                self.JST_Outcomes(outcome, jst_outcome[outcome])
+            else:
+                self.JST_Outcomes(outcome, jst_outcome[outcome], new_spacing=False)
+            key+=1
         self.mc_row += 1
 
     # will be used if we decide to implement emailing the form.
