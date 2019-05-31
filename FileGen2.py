@@ -19,7 +19,7 @@ import textwrap
 # To instance form gen one should provide the correct OC insturctor name, OC department,
 # military_course, and the oc_course
 
-#creating a FileGen object will fill out the top of the 
+#creating a FileGen object will fill out the top of the form.
 
 class FileGen:
 
@@ -60,13 +60,11 @@ class FileGen:
         self.line_spacing = 12
         self.tbl = self.comp_table._tbl
 
-        self.TOP = 1
-        self.BOTTOM = 2
-
         self.__Remove_Border(self.tbl.getchildren()[5])
         self.__Fill_Course_Info()
 
-    #used to generate more rows for the use of comparason.
+    #used to generate more rows for the use of comparason. first adds row to the bottom of the table
+    #and then moves it to the correct location.
     def __Add_Row(self, border=0):
         new_row = self.comp_table.add_row()
         tr = new_row._tr
@@ -74,8 +72,8 @@ class FileGen:
         self.tbl.insert(5 + self.total_columns_added, tr)#6 meens insert it at the 4th row. 7-5 e.t.c.
         self.total_columns_added += 1
         
-
-    def GetLastRow(self, rows):
+    # used in __Remove_Border_Last_Row() to find the last row that is created in __Add_Row()
+    def __GetLastRow(self, rows):
         last = rows[-1]
         return last
 
@@ -113,8 +111,18 @@ class FileGen:
         for cell in self.comp_rows:
             pass
         rows = self.tbl.getchildren()
-        last_row = self.GetLastRow(rows)
+        last_row = self.__GetLastRow(rows)
         self.__Remove_Border(last_row, border=border)
+
+    # used for deleting rows.
+    def __Remove_Row(self, row):
+        tr = row._tr
+        self.tbl.remove(tr)
+
+    # called before saving the program in self.Save_Doc, this function removes the last un-needed row.
+    def __Remove_Empty_Row(self):
+        empty_row = self.comp_rows[-4]
+        self.__Remove_Row(empty_row)
 
                
     # will add checkboxes the the correct columns
@@ -210,4 +218,5 @@ class FileGen:
 
     # used to save the document. Must call this to save document.
     def Save_Doc(self, doc_name='Test-Saved.docx'):
+        self.__Remove_Empty_Row()
         self.doc.save(doc_name)
