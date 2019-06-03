@@ -26,7 +26,7 @@ class FileGen:
         # initializing variables to be used throught the generator
     def __init__(self, instructor_name, department, military_course, oc_course):
         # test.docx should be the name of the template file.
-        self.doc = Document('Test2.docx')
+        self.doc = Document('Form_Template_Version_4_11_2019')
         self.total_tables = self.doc.tables  # locating document tables
         # locating correct table for course comparason
         self.comp_table = self.total_tables[0]
@@ -68,7 +68,7 @@ class FileGen:
     def __Add_Row(self, border=0):
         new_row = self.comp_table.add_row()
         tr = new_row._tr
-        self.__Remove_Border_Last_Row(border=border)
+        self.__Remove_Border_Last_Row(border=border)# the border is removed based on where it will be incerted into the table.
         self.tbl.insert(5 + self.total_columns_added, tr)#6 meens insert it at the 4th row. 7-5 e.t.c.
         self.total_columns_added += 1
         
@@ -77,6 +77,7 @@ class FileGen:
         last = rows[-1]
         return last
 
+    # used to remove the borders of cells, either top or bottom.
     def __Remove_Border(self, row, border=0):
         for cell in row:
             tcPr = cell.tcPr
@@ -105,11 +106,9 @@ class FileGen:
                 tcBorders.append(bottom)
             tcPr.append(tcBorders)
 
+    # the border is removed before it is incerted into to correct spot in the table.
     def __Remove_Border_Last_Row(self, border=0):
         self.compare_row = self.comp_rows[self.comp_row]
-        #print("attempting to find borders: ", self.compare_row.borders)
-        for cell in self.comp_rows:
-            pass
         rows = self.tbl.getchildren()
         last_row = self.__GetLastRow(rows)
         self.__Remove_Border(last_row, border=border)
@@ -218,5 +217,5 @@ class FileGen:
 
     # used to save the document. Must call this to save document.
     def Save_Doc(self, doc_name='Test-Saved.docx'):
-        self.__Remove_Empty_Row()
+        self.__Remove_Empty_Row()# removes the emtpy row before it is saved to the file.
         self.doc.save(doc_name)
