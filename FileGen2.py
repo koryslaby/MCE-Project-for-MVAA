@@ -24,9 +24,9 @@ import textwrap
 class FileGen:
 
         # initializing variables to be used throught the generator
-    def __init__(self, instructor_name, department, military_course, oc_course):
+    def __init__(self, instructor_name, department, military_course, oc_course, oc_description, mc_description):
         # test.docx should be the name of the template file.
-        self.doc = Document('Form_Template_Version_4_11_2019')
+        self.doc = Document('Form_Template_Version_5_13_2019.docx')# Form_Template_Version_5_13_2019.docx # Form_Template_Version_4_11_2019.docx
         self.total_tables = self.doc.tables  # locating document tables
         # locating correct table for course comparason
         self.comp_table = self.total_tables[0]
@@ -43,6 +43,8 @@ class FileGen:
         self.dep_name = department
         self.m_course = military_course
         self.oc_course = oc_course
+        self.oc_description = oc_description
+        self.mc_description = mc_description
         # bellow marks out the columns for both military and olivet course
         # outcomes.
         self.comp_row = 3
@@ -61,15 +63,21 @@ class FileGen:
         self.tbl = self.comp_table._tbl
 
         self.__Remove_Border(self.tbl.getchildren()[5])
+        self.__Check_Table_Style()
         self.__Fill_Course_Info()
+
+    # if the table style is different, added rows might not have borders or different borders.
+    def __Check_Table_Style(self):
+        if self.comp_table.style != 'Table Grid':
+            self.comp_table.style = 'Table Grid'
 
     #used to generate more rows for the use of comparason. first adds row to the bottom of the table
     #and then moves it to the correct location.
-    def __Add_Row(self, border=0):
+    def __Add_Row(self, location, border=0):
         new_row = self.comp_table.add_row()
         tr = new_row._tr
         self.__Remove_Border_Last_Row(border=border)# the border is removed based on where it will be incerted into the table.
-        self.tbl.insert(5 + self.total_columns_added, tr)#6 meens insert it at the 4th row. 7-5 e.t.c.
+        self.tbl.insert(5 + location, tr)#6 meens insert it at the 4th row. 7-5 e.t.c.
         self.total_columns_added += 1
         
     # used in __Remove_Border_Last_Row() to find the last row that is created in __Add_Row()
@@ -167,10 +175,10 @@ class FileGen:
         now = datetime.datetime.now()
         self.date_cell.text = "Date of Initiation:\n" + \
             str(now.month) + "-" + str(now.day) + "-" + str(now.year)
-        self.military_course_cell.text = "JST or AU course for which Credit/Equivalency is sought:\n" + self.m_course
+        self.military_course_cell.text = "JST or AU course for which Credit/Equivalency is sought:\n" + self.m_course + "\n\nCourse Description: " + self.mc_description
         self.instructor_name_cell.text = "Evaluator Name:\n" + \
             self.instr_name + "\nDepartment:\n" + self.dep_name
-        self.oc_course_cell.text = "Olivet College course being considered for possible equivalency:\n" + self.oc_course
+        self.oc_course_cell.text = "Olivet College course being considered for possible equivalency:\n" + self.oc_course + "\n\nCourse Description: " + self.oc_description
 
     # used for entering individual Olivet course outcomes
     def Olivet_Course_Outcomes(self, c_outcome):
@@ -190,9 +198,9 @@ class FileGen:
         para.paragraph_format.line_spacing = None
         para.paragraph_format.line_spacing = Pt(self.line_spacing)
         if new_row==False:
-            self.__Add_Row()
+            self.__Add_Row(self.total_columns_added)
         else:
-            self.__Add_Row(border=2)
+            self.__Add_Row(self.total_columns_added, border=2)
         self.comp_row += 1
 
         self.__Add_Checkbox(jst_outcome, percent)
