@@ -24,7 +24,7 @@ import textwrap
 class FileGen:
 
         # initializing variables to be used throught the generator
-    def __init__(self, instructor_name, department, military_course, oc_course, oc_description, mc_description):
+    def __init__(self, instructor_name, department, military_course, oc_course, oc_course_name, mc_course_name, oc_description, mc_description):
         # test.docx should be the name of the template file.
         self.doc = Document('Form_Template_Version_5_13_2019.docx')# Form_Template_Version_5_13_2019.docx # Form_Template_Version_4_11_2019.docx
         self.total_tables = self.doc.tables  # locating document tables
@@ -45,6 +45,8 @@ class FileGen:
         self.oc_course = oc_course
         self.oc_description = oc_description
         self.mc_description = mc_description
+        self.oc_course_name = oc_course_name
+        self.mc_course_name = mc_course_name
         # bellow marks out the columns for both military and olivet course
         # outcomes.
         self.comp_row = 3
@@ -175,10 +177,10 @@ class FileGen:
         now = datetime.datetime.now()
         self.date_cell.text = "Date of Initiation:\n" + \
             str(now.month) + "-" + str(now.day) + "-" + str(now.year)
-        self.military_course_cell.text = "JST or AU course for which Credit/Equivalency is sought:\n" + self.m_course + "\n\nCourse Description: " + self.mc_description
+        self.military_course_cell.text = "JST or AU course for which Credit/Equivalency is sought:\n" + self.m_course + " " + self.mc_course_name + "\n" + self.mc_description
         self.instructor_name_cell.text = "Evaluator Name:\n" + \
             self.instr_name + "\nDepartment:\n" + self.dep_name
-        self.oc_course_cell.text = "Olivet College course being considered for possible equivalency:\n" + self.oc_course + "\n\nCourse Description: " + self.oc_description
+        self.oc_course_cell.text = "Olivet College course being considered for possible equivalency:\n" + self.oc_course + " " + self.oc_course_name + "\n" + self.oc_description
 
     # used for entering individual Olivet course outcomes
     def Olivet_Course_Outcomes(self, c_outcome):
