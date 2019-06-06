@@ -67,6 +67,7 @@ class FileGen:
 
     # called at the object instance it can be called again if there are more tables created. updating will change what table info is added to.
     def Update_Compare_Info(self, compare_table=None):
+        print("calling Update_Compare_Info")
         self.compare_tables, self.first_comp_row = self.Find_Compare_Tables() # finding the first compare row and compare table, results could difer per form.
         self.comp_table = self.compare_tables[0]
         if compare_table != None:
@@ -75,7 +76,7 @@ class FileGen:
         self.comp_last_row = self.comp_rows[-1]
         self.comp_copy_row = self.comp_rows[1]
         self.mc_outcome_cell = self.comp_table.cell(1,1)
-        self.comp_row = len(self.comp_rows)-1
+        self.comp_row = self.first_comp_row
         self.tbl = self.comp_table._tbl
         self.mc_row = len(self.comp_rows)-1
 
@@ -84,16 +85,18 @@ class FileGen:
 
     def Find_Compare_Tables(self):
         tables = []
-        row = 0
+        f_comp_row = 0
+        iterator = 1
         for table in self.total_tables:
-            row_iterator = 0
             for row in table.rows:
                 for cell in row.cells:
                     if cell.paragraphs[0].text == "Olivet College\nCourse Learning Outcome":
                         tables.append(table)
-            row_iterator += 1
-            row = row_iterator
-        return tables, row+1
+                        f_comp_row = iterator
+                iterator += 1
+                
+        print("row is: ", f_comp_row)
+        return tables, f_comp_row
 
     # if the table style is different, added rows might not have borders or different borders.
     def __Check_Table_Style(self):
@@ -103,6 +106,7 @@ class FileGen:
     #used to generate more rows for the use of comparason. first adds row to the bottom of the table
     #and then moves it to the correct location.
     def __Add_Row_At(self, location, border=0):
+        print("adding row")
         new_row = self.comp_table.add_row()
         tr = new_row._tr
         self.__Remove_Border_Last_Row(border=border)# the border is removed based on where it will be incerted into the table.
@@ -214,6 +218,7 @@ class FileGen:
     # used for entering individual Olivet course outcomes
     def Olivet_Course_Outcomes(self, c_outcome):
         self.total_oc_course +=1
+        print("comp row is: :", self.comp_row)
         self.compare_row = self.comp_rows[self.comp_row]
         self.oc_outcome_cell = self.compare_row.cells[0]
         para = self.oc_outcome_cell.paragraphs[0]
@@ -221,21 +226,19 @@ class FileGen:
 
     # used for entering individual Military course outcomes.
     # used when the user wants to move to the next cell.
-    def JST_Outcomes(self, outcomes_length, jst_outcome, percent, new_row=False):
+    def JST_Outcomes(self, create_row, jst_outcome, percent, new_row=False):
         self.compare_row = self.comp_rows[self.comp_row]
         self.mc_outcome_cell = self.compare_row.cells[1]
         para = self.mc_outcome_cell.paragraphs[0]
         para.add_run(jst_outcome)
         para.paragraph_format.line_spacing = None
         para.paragraph_format.line_spacing = Pt(self.line_spacing)
-        if outcomes_length != self.comp_row:
+        if create_row == True:
             if new_row==False:
                 self.__Add_Row_At(self.total_columns_added)
             else:
                 self.__Add_Row_At(self.total_columns_added, border=1)
             self.comp_row += 1
-        
-
         self.__Add_Checkbox(jst_outcome, percent)
 
     # adds both the Olivet course outcomes with there coresponding military course outcomes.
@@ -243,12 +246,12 @@ class FileGen:
     # be the coresponding dictionary that holds percentages.
     def Like_Outcomes(self, c_outcome, jst_outcome):           
         self.Olivet_Course_Outcomes(c_outcome)
-        iterator = 0
+        iterator = 1
         for outcome in jst_outcome:
-            if iterator == len(jst_outcome)-2:
-                self.JST_Outcomes(len(jst_outcome), outcome[0], outcome[1], new_row=True)
+            if iterator < len(jst_outcome):
+                self.JST_Outcomes(True, outcome[0], outcome[1])
             else:
-                self.JST_Outcomes(len(jst_outcome), outcome[0], outcome[1])
+                self.JST_Outcomes(False, outcome[0], outcome[1], new_row=True)
             iterator +=1
 
 
@@ -266,8 +269,8 @@ class TableGen(FileGen):
     def __init__(self, instructor_name, department, military_course, oc_course, oc_course_name, mc_course_name, oc_description, mc_description ):
         super(TableGen, self).__init__(instructor_name, department, military_course, oc_course, oc_course_name, mc_course_name, oc_description, mc_description)
         self.table_iterator = -1
-        self.comp_row = 1
         self.Update_Compare_Info()
+        self.comp_row = 1
 
     def move_table_after(self, table, paragraph):
         tbl, p = table._tbl, paragraph._p
@@ -298,6 +301,7 @@ class TableGen(FileGen):
         self.Update_Compare_Info(self.compare_tables[self.table_iterator])
         self.total_columns_added = "end" # each comparison now has its own table so we down have to incert rows at a point.
         self.Like_Outcomes(c_outcome, jst_outcome)
+        self.comp_row = 1
         
                 
 
