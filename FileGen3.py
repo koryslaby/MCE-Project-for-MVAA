@@ -21,18 +21,31 @@ import textwrap
 # military_course, and the oc_course
 
 #creating a FileGen object will fill out the top of the form.
+#use FileGen through TableGen
+#ex:
+
+#tg = FileGen.TableGen(OC_Course, JST_Course, Reviewer)
+#tg.Find_Split_And_Copy(len(oc_learning_outcomes))
+#for oc, jst in comparison_dict.items():
+#       tg.Like_Outcome_Tables(oc, jst)
 
 class FileGen:
 
         # initializing variables to be used throught the generator
     def __init__(self, oc_course, jst_course, reviewer):
         # test.docx should be the name of the template file.
-        self.doc = Document('Tables_Form_Template_Version_5_13_2019.docx')# Form_Template_Version_5_13_2019.docx is the other template.
+        self.doc = Document('NewFormTemplate_5_13_2019.docx')# Form_Template_Version_5_13_2019.docx is the other template.
         self.total_tables = self.doc.tables  # locating document tables
         # locating correct table for course comparason
         self.info_table = self.total_tables[0]
         #self.compare_table, self.first_comp_row = self.Find_Compare_Tables() 
         #print(self.first_comp_row)
+        self.holder_table = self.total_tables[1]
+        self.nested_tables = self.holder_table.cell(0,0).tables
+        self.list_holder_tables = [self.holder_table]
+        self.compare_tables, self.first_comp_row, self.oc_course_name_cells = self.Find_Compare_Tables()
+        self.comp_table = self.compare_tables[0]
+        self.table_iterator = 0
         self.Update_Compare_Info()
         #
         self.date_cell = self.info_table.cell(0, 0)
@@ -63,15 +76,12 @@ class FileGen:
         self.line_spacing = 12
         self.remove_last_row = False
         
+        
         self.__Check_Table_Style()
         self.__Fill_Course_Info()
 
     # called at the object instance it can be called again if there are more tables created. updating will change what table info is added to.
-    def Update_Compare_Info(self, compare_table=None):
-        self.compare_tables, self.first_comp_row = self.Find_Compare_Tables() # finding the first compare row and compare table, results could difer per form.
-        self.comp_table = self.compare_tables[0]
-        if compare_table != None:
-            self.comp_table = compare_table
+    def Update_Compare_Info(self):
         self.comp_rows = self.comp_table.rows
         self.comp_last_row = self.comp_rows[-1]
         self.comp_copy_row = self.comp_rows[1]
@@ -79,22 +89,29 @@ class FileGen:
         self.comp_row = self.first_comp_row
         self.tbl = self.comp_table._tbl
         self.mc_row = len(self.comp_rows)-1
-        self.__Remove_Border(self.tbl.getchildren()[self.comp_row +2])
 
     # function used for finding the compare table or tables in a form.
     def Find_Compare_Tables(self):
         tables = []
+        cells = []
         f_comp_row = 0
         iterator = 0
-        for table in self.total_tables:
-            iterator = 1
-            for row in table.rows:
-                for cell in row.cells:
-                    if cell.paragraphs[0].text == "Olivet College\nCourse Learning Outcome":
-                        tables.append(table)
-                        f_comp_row = iterator
-                iterator += 1
-        return tables, f_comp_row
+        for tbl in self.total_tables:
+            if len(tbl.cell(0,0).tables) > 0:
+                for table in tbl.cell(0,0).tables:
+                    added_table = False
+                    iterator = 1
+                    for row in table.rows:
+                        for cell in row.cells:
+                            if cell.paragraphs[0].text == "Olivet College Course Learning Outcome":
+                                if added_table == False:
+                                    tables.append(table)
+                                    cells.append(cell)
+                                    added_table = True
+                            if cell.paragraphs[0].text == "JST/AU":
+                                f_comp_row = iterator
+                        iterator += 1
+        return tables, f_comp_row, cells
 
     # if the table style is different, added rows might not have borders or different borders.
     def __Check_Table_Style(self):
@@ -118,7 +135,7 @@ class FileGen:
         return last
 
     # used to remove the borders of cells, either top or bottom.
-    def __Remove_Border(self, row, border=0):
+    def Remove_Border(self, row, border=0):
         for cell in row:
             tcPr = cell.tcPr
             tcBorders = OxmlElement('w:tcBorders')
@@ -151,7 +168,7 @@ class FileGen:
         self.compare_row = self.comp_rows[self.comp_row]
         rows = self.tbl.getchildren()
         last_row = self.__GetLastRow(rows)
-        self.__Remove_Border(last_row, border=border)
+        self.Remove_Border(last_row, border=border)
 
     # used for deleting rows.
     def __Remove_Row(self, row):
@@ -167,7 +184,7 @@ class FileGen:
     def __Add_Checkbox(self, jst_outcome, percent):
         column_check_add = self.comp_row
 
-        for i in range(2, len(self.comp_table.columns)):
+        for i in range(1, len(self.comp_table.columns)):
             cell_check_add = self.compare_row.cells[i]
             para = cell_check_add.paragraphs[0]
             run = para.add_run("\u2610")
@@ -178,13 +195,13 @@ class FileGen:
 
     # a percentage determined by nltk to highlight a sugested box to check.
     def __Sugested_Check(self, percent, font, row, para, run):
-        if(percent >= 1 and percent <= self.no_match and row == 2):
+        if(percent >= 1 and percent <= self.no_match and row == 1):
             #self.__Highlight(font)
             self.__Check_Mark(run)
-        if( percent > self.no_match and percent <= self.moderate_match and row == 3):
+        if( percent > self.no_match and percent <= self.moderate_match and row == 2):
             #self.__Highlight(font)
             self.__Check_Mark(run)
-        if(percent > self.moderate_match and percent <= self.strong_match and row == 4):
+        if(percent > self.moderate_match and percent <= self.strong_match and row == 3):
             #self.__Highlight(font)
             self.__Check_Mark(run)
         para.paragraph_format.line_spacing = Pt(self.line_spacing)
@@ -214,29 +231,28 @@ class FileGen:
     # used for entering individual Olivet course outcomes
     def Olivet_Course_Outcomes(self, c_outcome):
         self.total_oc_course +=1
-        self.compare_row = self.comp_rows[self.comp_row]
-        self.oc_outcome_cell = self.compare_row.cells[0]
+        self.oc_outcome_cell = self.oc_course_name_cells[self.compare_tables.index(self.comp_table)-1]
         para = self.oc_outcome_cell.paragraphs[0]
-        para.add_run(c_outcome)
+        para.add_run("\n" + c_outcome)
 
     # used for entering individual Military course outcomes.
     # used when the user wants to move to the next cell.
     def JST_Outcomes(self, create_row, jst_outcome, percent, new_row=False):
         self.compare_row = self.comp_rows[self.comp_row]
-        self.mc_outcome_cell = self.compare_row.cells[1]
+        self.mc_outcome_cell = self.compare_row.cells[0]
         para = self.mc_outcome_cell.paragraphs[0]
         para.add_run(jst_outcome)
         para.paragraph_format.line_spacing = None
         para.paragraph_format.line_spacing = Pt(self.line_spacing)
         if create_row == True:
             if new_row==False:
-                self.__Add_Row_At(self.total_columns_added)
+                self.__Add_Row_At(self.total_columns_added, border=0)
             else:
-                self.__Add_Row_At(self.total_columns_added, border=1)
+                self.__Add_Row_At(self.total_columns_added, border=0)
             self.comp_row += 1
         if create_row == False and len(self.compare_tables) == 1:
             self.remove_last_row = True
-            self.__Add_Row_At(self.total_columns_added, border=2)
+            self.__Add_Row_At(self.total_columns_added, border=0)
             self.comp_row += 1
         self.__Add_Checkbox(jst_outcome, percent)
 
@@ -261,15 +277,21 @@ class FileGen:
     def Email_Doc(self):
         pass
 
+    def Remove_Boarder_First_Cell(self):
+        for table in self.compare_tables:
+            tbl = table._tbl
+            self.__Remove_Border(tbl.getchildren()[+3])
+
     # used to save the document. Must call this to save document.
     def Save_Doc(self, doc_name='Test-Saved.docx'):
+        #self.Remove_Boarder_First_Cell()
         if self.remove_last_row == True:
             self.Remove_Empty_Row()
         self.doc.save(doc_name)
 
 # this class is a child of FileGen used for creating a document from the tables format.
 # you can use FileGen through TableGen. Just call the methods from FileGen.
-class TableGen(FileGen):
+class TableGen(FileGen):# use subclass have not tested FileGen.
 
     """docstring for TableGen"""
     def __init__(self, oc_course, jst_course, reviewer):
@@ -277,6 +299,11 @@ class TableGen(FileGen):
         self.table_iterator = -1
         self.Update_Compare_Info()
         self.ran_find_split_and_copy = False
+        
+
+    def Update_Compare_Info(self, compare_table=None):
+        self.comp_table = self.compare_tables[self.table_iterator]
+        super().Update_Compare_Info()
 
     def move_table_after(self, table, paragraph):
         tbl, p = table._tbl, paragraph._p
@@ -286,9 +313,11 @@ class TableGen(FileGen):
         ctbl, atbl = ctable._tbl, atable._tbl
         new_tbl = deepcopy(ctbl)
         atbl.addnext(new_tbl)
+        return new_tbl
 
-    def move_para_after(self, paragraph, table):
-        p = paragraph._p
+    def move_para_after(self, table):
+        new_paragraph = self.doc.add_paragraph("")
+        p = new_paragraph._p
         table.addnext(p)
 
     def update_tables(self): # used to update the total_tables property
@@ -299,9 +328,13 @@ class TableGen(FileGen):
         self.ran_find_split_and_copy = True
         iterator = tables-1
         for x in range(0,iterator):# goes through and makes the enough tables to fit each oc_outcome.
-            new_tbl = self.copy_table_after(self.comp_table, self.comp_table)
+            #new_tbl = self.copy_table_after(self.comp_table, self.comp_table)
+            new_tbl = self.copy_table_after(self.holder_table, self.holder_table)
+            self.move_para_after(new_tbl)
             iterator -= 1
-        self.update_tables()
+            self.update_tables()
+        self.move_para_after(self.holder_table._tbl)
+        self.compare_tables, self.first_comp_row, self.oc_course_name_cells = self.Find_Compare_Tables()
         self.Update_Compare_Info()
 
     # checks to see if tables have been generated.
@@ -313,10 +346,12 @@ class TableGen(FileGen):
     # !!make sure you are useing the correct format when using this method!!
     def Like_Outcome_Tables(self, c_outcome, jst_outcome):
         self.Check_Find_Split_And_Copy()# Checking to see if the tables where generated.
-        self.table_iterator += 1
         self.Update_Compare_Info(self.compare_tables[self.table_iterator])# used to move on to the next table after one is completed.
+        self.table_iterator += 1
         self.total_columns_added = "end" # each comparison now has its own table so we down have to incert rows at a point.
         self.Like_Outcomes(c_outcome, jst_outcome)
+        #self.Remove_Border(self.tbl.getchildren()[2])
+
         self.comp_row = 1
         
 # this class is for throwing a error if the like_outcome_table() method is used before the tables are generated using find_split_and_copy()
