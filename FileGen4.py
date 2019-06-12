@@ -32,7 +32,7 @@ class FileGen:
         # initializing variables to be used throught the generator
     def __init__(self, oc_course, jst_course, reviewer):
         # test.docx should be the name of the template file.
-        self.doc = Document('Nested_Tables_Form_Template_Version_4_11_2019')# Have to use this form template.
+        self.doc = Document('Nested_Tables_Form_Template_Version_4_11_2019.docx')# Have to use this form template.
         self.total_tables = self.doc.tables  # locating document tables
         # locating correct table for course comparason
         self.info_table = self.total_tables[0]
