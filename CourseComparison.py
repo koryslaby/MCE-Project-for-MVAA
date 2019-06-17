@@ -141,26 +141,40 @@ def compare_courses(course1, course2, reviewer):
 
     file_gen = FileGen2.FileGen(course1, course2, reviewer)
 
-    for oc, jst in comparison_dict.items():
-        file_gen.Like_Outcomes(oc, jst)
+    file_gen.find_split_and_copy(len(comparison_dict))
 
-    file_name = './files/EvalForms/' + course1.number + '_' + course2.number + '_Eval_Form.docx'
-    file_gen.Save_Doc(file_name)
+    for oc, jst in comparison_dict.items():
+        file_gen.like_outcome_tables(oc, jst)
+
+    file_name = course1.number + '_' + course2.number + '_Eval_Form.docx'
+    file_gen.save_doc(file_name)
 
 
 database = 'db.sqlite3'
 
-# course_pairs = [['CJ 220', 'A-830-0030'], ['IRM 340', 'NV-1710-0118'], ['JMC 105', 'AR-2201-0603'],
-#                 ['MTH 120', 'NV-1710-0118'], ['SCI 107', 'AR-1601-0277'], ['PE 107', 'A-830-0030']]
-course_pairs = ['PE 107', 'A-830-0030', 'Nick Juday']
+course_pairs = [['CJ 220', 'A-830-0030', 'Regina Armstrong'], ['PE 107', 'A-830-0030', 'Nick Juday'], ['JMC 105', 'AR-2201-0603', 'Joanne Williams'], ['MTH 120', 'NV-1710-0118', 'Janine M. Peters'], ['SCI 107', 'AR-1601-0277', 'Leah Knapp'], ['IRM 340', 'NV-1710-0118', 'Thomas R. Humphreys']]
+#course_pairs = ['PE 107', 'A-830-0030', 'Nick Juday']
 
-OC_Course = Course(database, course_pairs[0])
-JST_Course = Course(database, course_pairs[1])
-Reviewer = Reviewer(database, course_pairs[2])
-compare_courses(OC_Course, JST_Course, Reviewer)
+#OC_Course = Course(database, course_pairs[0])
+#JST_Course = Course(database, course_pairs[1])
+#Reviewer = Reviewer(database, course_pairs[2])
+#compare_courses(OC_Course, JST_Course, Reviewer)
 
-# for course in course_pairs:
-#     OC_Course = Course(database, oc)
-#     JST_Course = Course(database, jst)
-#     Reviewer = Reviewer(database, rev)
-#     compare_courses(OC_Course, JST_Course, Reviewer)
+for course in course_pairs:
+    print('trying name: ', course[2])
+    OC_Course = Course(database, course[0])
+    JST_Course = Course(database, course[1])
+    reviewer = Reviewer(database, course[2])
+    compare_courses(OC_Course, JST_Course, reviewer)
+
+
+
+
+
+
+
+
+
+
+
+

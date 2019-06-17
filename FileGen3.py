@@ -102,21 +102,24 @@ class FileGen:
         f_comp_row = 0
         iterator = 0
         for tbl in self.total_tables:
-            if len(tbl.cell(0,0).tables) > 0:
+            if len(tbl.cell(0,0).tables) > 0:# this table holds a nested table
                 for table in tbl.cell(0,0).tables:
-                    added_table = False # because table is 
                     iterator = 1
-                    for row in table.rows:
-                        for cell in row.cells:
-                            if cell.paragraphs[0].text == "Olivet College Course Learning Outcome":# as of now these have to match heading for the program to work.
-                                if added_table == False:
+                    rows = table.rows
+                    found_comp_row = False
+                    for row in rows:
+                        row_cells = row.cells
+                        cell_iterator = 0
+                        for cell in row_cells:
+                            if row_cells[0] == cell and cell_iterator == 1:# looking for the first cell in the nested table
                                     tables.append(table)
                                     cells.append(cell)
-                                    added_table = True
-                            if cell.paragraphs[0].text == "JST/AU Learning Outcome":# this heading has to match also.
+                            if cell.paragraphs[0].text == "" and found_comp_row == False:# the first free cell is the first comparison row
                                 f_comp_row = iterator
+                                found_comp_row = True
+                            cell_iterator += 1
                         iterator += 1
-        return tables, f_comp_row, cells
+        return tables, f_comp_row-1, cells
 
     # if the table style is different, added rows might not have borders or different borders.
     def check_table_style(self):
