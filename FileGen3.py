@@ -32,9 +32,9 @@ import textwrap
 class FileGen:
 
         # initializing variables to be used throught the generator
-    def __init__(self, oc_course, jst_course, reviewer):
+    def __init__(self, oc_course, jst_course, reviewer):# oc_course, jst_course, reviewer
         # test.docx should be the name of the template file.
-        self.doc = Document('NewFormTemplate_5_13_2019.docx')# Form_Template_Version_5_13_2019.docx is the other template.
+        self.doc = Document('MCE-TEMPLATE-5.13.2019.docx')# Form_Template_Version_5_13_2019.docx is the other template.
         self.total_tables = self.doc.tables  # locating document tables
         # locating correct table for course comparason
         self.info_table = self.total_tables[0]
@@ -104,16 +104,16 @@ class FileGen:
         for tbl in self.total_tables:
             if len(tbl.cell(0,0).tables) > 0:
                 for table in tbl.cell(0,0).tables:
-                    added_table = False
+                    added_table = False # because table is 
                     iterator = 1
                     for row in table.rows:
                         for cell in row.cells:
-                            if cell.paragraphs[0].text == "Olivet College Course Learning Outcome":
+                            if cell.paragraphs[0].text == "Olivet College Course Learning Outcome":# as of now these have to match heading for the program to work.
                                 if added_table == False:
                                     tables.append(table)
                                     cells.append(cell)
                                     added_table = True
-                            if cell.paragraphs[0].text == "JST/AU":
+                            if cell.paragraphs[0].text == "JST/AU Learning Outcome":# this heading has to match also.
                                 f_comp_row = iterator
                         iterator += 1
         return tables, f_comp_row, cells
@@ -128,7 +128,7 @@ class FileGen:
     def add_row_at(self, location, border=0):
         new_row = self.comp_table.add_row()
         tr = new_row._tr
-        self.emove_order_ast_ow(border=border)# the border is removed based on where it will be incerted into the table.
+        self.remove_border_last_row(border=border)# the border is removed based on where it will be incerted into the table.
         if location != "end":# this gives the method the ability to add rows to the end of the table.
             self.tbl.insert(5 + location, tr)#6 meens insert it at the 4th row. 7-5 e.t.c.
             self.total_columns_added += 1
@@ -137,7 +137,7 @@ class FileGen:
     # used in emove_order_ast_ow() to find the last row that is created in __Add_Row()
     def getLastRow(self, rows):
         last = rows[-1]
-        return last
+        return last                
 
     # used to remove the borders of cells, either top or bottom.
     def remove_border(self, row, border=0):
@@ -169,7 +169,7 @@ class FileGen:
             tcPr.append(tcBorders)
 
     # the border is removed before it is incerted into to correct spot in the table.
-    def emove_order_ast_ow(self, border=0):
+    def remove_border_last_row(self, border=0):
         self.compare_row = self.comp_rows[self.comp_row]
         rows = self.tbl.getchildren()
         last_row = self.getLastRow(rows)
@@ -228,10 +228,10 @@ class FileGen:
         now = datetime.datetime.now()
         self.date_cell.text = "Date of Initiation:\n" + \
             str(now.month) + "-" + str(now.day) + "-" + str(now.year)
-        self.military_course_cell.text = "JST or AU course for which Credit/Equivalency is sought:\n" + self.m_course + " " + self.mc_course_name + "\n" + self.mc_description
+        self.military_course_cell.text = "JST or AU course for which Credit/Equivalency is sought:\n" + self.m_course + " - " + self.mc_course_name + "\n" + self.mc_description
         self.instructor_name_cell.text = "Evaluator Name:\n" + \
             self.instr_name + "\nDepartment:\n" + self.dep_name
-        self.oc_course_cell.text = "Olivet College course being considered for possible equivalency:\n" + self.oc_course + " " + self.oc_course_name + "\n" + self.oc_description
+        self.oc_course_cell.text = "Olivet College course being considered for possible equivalency:\n" + self.oc_course + " - " + self.oc_course_name + "\n" + self.oc_description
 
     # used for entering individual Olivet course outcomes
     def olivet_course_outcomes(self, c_outcome):
@@ -340,7 +340,8 @@ class FileGen:
         #self.remove_boarder_first_cell()
         if self.remove_last_row == True:
             self.remove_empty_row()
-        self.doc.save(doc_name)   
+        self.doc.save(doc_name)
+
         
 # this class is for throwing a error if the like_outcome_table() method is used before the tables are generated using find_split_and_copy()
 class HaveToCreateTables(Exception):
