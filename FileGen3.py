@@ -139,9 +139,19 @@ class FileGen:
 
     #used to generate more rows for the use of comparason. first adds row to the bottom of the table
     #and then moves it to the correct location.
+<<<<<<< HEAD
     def add_row_at(self, location="end", border=0):
         self.copy_row_after(self.comp_last_row)
         #self.remove_border_last_row(border=border)# the border is removed based on where it will be incerted into the table.
+=======
+    def add_row_at(self, location, border=0):
+        new_row = self.comp_table.add_row()
+        tr = new_row._tr
+        self.remove_border_last_row(border=border)# the border is removed based on where it will be incerted into the table.
+        if location != "end":# this gives the method the ability to add rows to the end of the table.
+            self.tbl.insert(5 + location, tr)#6 meens insert it at the 4th row. 7-5 e.t.c.
+            self.total_columns_added += 1
+>>>>>>> 7dad0c7ba1ba85e4f2cb323369efe11b4988d510
         
         
     # used in emove_order_ast_ow() to find the last row that is created in __Add_Row()
