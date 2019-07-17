@@ -126,15 +126,22 @@ class FileGen:
         if self.comp_table.style != 'Table Grid':
             self.comp_table.style = 'Table Grid'
 
+    # used to copy the given row
+    def copy_row_after(self, row):
+        print("creating row")
+        row_copy = row._tr
+        new_row = deepcopy(row_copy)
+        for i in new_row:
+            print(i)
+        self.remove_border(new_row)
+        row_copy.addnext(new_row)
+        self.comp_row += 1
+
     #used to generate more rows for the use of comparason. first adds row to the bottom of the table
     #and then moves it to the correct location.
-    def add_row_at(self, location, border=0):
-        new_row = self.comp_table.add_row()
-        tr = new_row._tr
-        self.remove_border_last_row(border=border)# the border is removed based on where it will be incerted into the table.
-        if location != "end":# this gives the method the ability to add rows to the end of the table.
-            self.tbl.insert(5 + location, tr)#6 meens insert it at the 4th row. 7-5 e.t.c.
-            self.total_columns_added += 1
+    def add_row_at(self, location="end", border=0):
+        self.copy_row_after(self.comp_last_row)
+        #self.remove_border_last_row(border=border)# the border is removed based on where it will be incerted into the table.
         
         
     # used in emove_order_ast_ow() to find the last row that is created in __Add_Row()
@@ -144,32 +151,36 @@ class FileGen:
 
     # used to remove the borders of cells, either top or bottom.
     def remove_border(self, row, border=0):
-        for cell in row:
-            tcPr = cell.tcPr
-            tcBorders = OxmlElement('w:tcBorders')
-            top = OxmlElement('w:top')
-            top.set(qn('w:val'), 'nil')
+        for cell in row[1:]:# have to bypass the first cell because it does not have tcPr.
+            try:
+                tcPr = cell.tcPr
+                tcBorders = OxmlElement('w:tcBorders')
+                top = OxmlElement('w:top')
+                top.set(qn('w:val'), 'nil')
         
-            left = OxmlElement('w:left')
-            left.set(qn('w:val'), 'nil')
+                left = OxmlElement('w:left')
+                left.set(qn('w:val'), 'nil')
         
-            bottom = OxmlElement('w:bottom')
-            bottom.set(qn('w:val'), 'nil')
-            bottom.set(qn('w:sz'), '4')
-            bottom.set(qn('w:space'), '0')
-            bottom.set(qn('w:color'), 'auto')
+                bottom = OxmlElement('w:bottom')
+                bottom.set(qn('w:val'), 'nil')
+                bottom.set(qn('w:sz'), '4')
+                bottom.set(qn('w:space'), '0')
+                bottom.set(qn('w:color'), 'auto')
 
-            right = OxmlElement('w:right')
-            right.set(qn('w:val'), 'nil')
-
-            if border == 1:
-                tcBorders.append(top)
-            if border == 2:
-                tcBorders.append(bottom)
-            if border == 0:
-                tcBorders.append(top)
-                tcBorders.append(bottom)
-            tcPr.append(tcBorders)
+                right = OxmlElement('w:right')
+                right.set(qn('w:val'), 'nil')
+                
+                if border == 1:
+                    tcBorders.append(top)
+                if border == 2:
+                    tcBorders.append(bottom)
+                if border == 0:
+                    tcBorders.append(top)
+                    tcBorders.append(bottom)
+                tcPr.append(tcBorders)
+            except Exception as e:
+                continue
+            
 
     # the border is removed before it is incerted into to correct spot in the table.
     def remove_border_last_row(self, border=0):
@@ -241,6 +252,7 @@ class FileGen:
         self.total_oc_course +=1
         self.oc_outcome_cell = self.oc_course_name_cells[self.compare_tables.index(self.comp_table)-1]
         para = self.oc_outcome_cell.paragraphs[0]
+        print("adding oc outcome")
         para.add_run("\n" + c_outcome)
 
     # used for entering individual Military course outcomes.
@@ -249,20 +261,20 @@ class FileGen:
         self.compare_row = self.comp_rows[self.comp_row]
         self.mc_outcome_cell = self.compare_row.cells[0]
         para = self.mc_outcome_cell.paragraphs[0]
+        para.text = "" #clearing out the text left over from the copy.
         para.add_run(jst_outcome)
         para.paragraph_format.line_spacing = None
         para.paragraph_format.line_spacing = Pt(self.line_spacing)
+        print("added jst_outcome")
         if create_row == True:
-            if new_row==False:
-                self.add_row_at(self.total_columns_added, border=0)
+            if new_row == False:
+                self.copy_row_after(self.comp_rows[-1])
             else:
-                self.add_row_at(self.total_columns_added, border=0)
-            self.comp_row += 1
+                self.copy_row_after(self.comp_rows[-1])
         if create_row == False and len(self.compare_tables) == 1:
             self.remove_last_row = True
-            self.add_row_at(self.total_columns_added, border=0)
-            self.comp_row += 1
-        self.add_checkbox(jst_outcome, percent)
+            self.copy_row_after(self.comp_rows[-1])
+        #self.add_checkbox(jst_outcome, percent)
 
     # adds both the Olivet course outcomes with there coresponding military course outcomes.
     # c_outcomes would be just a string for the Olivet college outcome and then jst_outcomes would
