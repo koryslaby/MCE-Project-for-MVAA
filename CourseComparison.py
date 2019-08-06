@@ -147,7 +147,7 @@ def compare_courses(course1, course2, reviewer):
         file_gen.like_outcome_tables(oc, jst)
 
 
-    file_name = course1.number + '_' + course2.number + '_Eval_Form.docx'
+    file_name = "forms/" + course1.number + '_' + course2.number + '_Eval_Form.docx'
     file_gen.save_doc(file_name)
 
 
