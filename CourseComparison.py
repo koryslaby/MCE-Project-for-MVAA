@@ -146,23 +146,17 @@ def compare_courses(course1, course2, reviewer):
     for oc, jst in comparison_dict.items():
         file_gen.like_outcome_tables(oc, jst)
 
-<<<<<<< HEAD
-    file_name = "forms/" + course1.number + '_' + course2.number + '_Eval_Form.docx'
-=======
+
     file_name = course1.number + '_' + course2.number + '_Eval_Form.docx'
->>>>>>> 7dad0c7ba1ba85e4f2cb323369efe11b4988d510
     file_gen.save_doc(file_name)
 
 
 database = 'db.sqlite3'
 
-<<<<<<< HEAD
-#course_pairs = [['CJ 220', 'A-830-0030', 'Regina Armstrong'], ['PE 107', 'A-830-0030', 'Nick Juday'], ['JMC 105', 'AR-2201-0603', 'Joanne Williams'], ['MTH 120', 'NV-1710-0118', 'Janine M. Peters'], ['SCI 107', 'AR-1601-0277', 'Leah Knapp'], ['IRM 340', 'NV-1710-0118', 'Thomas R. Humphreys']]
-course_pairs = [['PE 107', 'A-830-0030', 'Nick Juday']]
-=======
+
 course_pairs = [['CJ 220', 'A-830-0030', 'Regina Armstrong'], ['PE 107', 'A-830-0030', 'Nick Juday'], ['JMC 105', 'AR-2201-0603', 'Joanne Williams'], ['MTH 120', 'NV-1710-0118', 'Janine M. Peters'], ['SCI 107', 'AR-1601-0277', 'Leah Knapp'], ['IRM 340', 'NV-1710-0118', 'Thomas R. Humphreys']]
 #course_pairs = ['PE 107', 'A-830-0030', 'Nick Juday']
->>>>>>> 7dad0c7ba1ba85e4f2cb323369efe11b4988d510
+
 
 #OC_Course = Course(database, course_pairs[0])
 #JST_Course = Course(database, course_pairs[1])
