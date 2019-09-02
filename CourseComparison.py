@@ -40,13 +40,17 @@ def tagged_to_synset(word, tag):
 
 
 def tokenize_sentence(group1):
+    print("----------------------")
     """
     :param group1: String to be tokenized
     :return: tokenized string
     """
     sentence = pos_tag(word_tokenize(group1))
+    print("sentence is: ", sentence)
     sentence = [tagged_to_synset(*tagged_word) for tagged_word in sentence]
+    print("sentence is: ", sentence)
     sentence = [ss for ss in sentence if ss]
+    print("sentence is: ", sentence)
     return sentence
 
 
